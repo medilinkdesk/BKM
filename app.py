@@ -58,6 +58,11 @@ def login_required(f):
 # PUBLIC ROUTES
 # ==========================================
 
+@app.route("/static-preview")
+def static_preview():
+    """Serves the standalone static GitHub Pages index.html template"""
+    return send_file(os.path.join(os.path.dirname(__file__), "index.html"))
+
 @app.route("/")
 def index():
     announcements = get_announcements()
