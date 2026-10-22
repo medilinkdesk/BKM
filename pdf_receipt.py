@@ -81,7 +81,7 @@ class NumberedCanvas(canvas.Canvas):
         # Subtle watermark
         self.setFont("Helvetica-Bold", 45)
         self.setFillColor(colors.HexColor("#FEF3C7"), alpha=0.35)
-        self.drawCentredString(297, 420, "BURI KALI MANDIR")
+        self.drawCentredString(297, 420, "BUDHI KALI MANDIR")
         self.setFont("Helvetica", 18)
         self.drawCentredString(297, 390, "KISHANGANJ (BIHAR)")
         
@@ -182,7 +182,7 @@ def generate_pdf_receipt(donation_dict, output_path=None):
     elements.append(Spacer(1, 4))
     
     # Header
-    elements.append(Paragraph("SHREE SHREE 108 BURI KALI MANDIR", title_style))
+    elements.append(Paragraph("SHREE SHREE 108 BUDHI KALI MANDIR (BURHI KALI MANDIR)", title_style))
     elements.append(Paragraph("Line Para, Kishanganj, Bihar - 855107", subtitle_style))
     elements.append(Paragraph("Historical Siddh Peeth Estd. 1902 | Reg. No: BR-KSG-BKM/1902-TRUST", meta_style))
     elements.append(Paragraph("Helpline: +91 6456 222108 / +91 94312 85510 | Email: sevadar@burhikalimandir.org", meta_style))
@@ -279,7 +279,7 @@ def generate_pdf_receipt(donation_dict, output_path=None):
     
     # Divine Blessing & Notes
     elements.append(Paragraph(
-        "\"May Shree Shree 108 Buri Kali Mata fulfill all your righteous wishes, protect your home, and bless you and your family with peace, health, and everlasting prosperity.\"",
+        "\"May Shree Shree 108 Budhi Kali Mata (Burhi Kali) fulfill all your righteous wishes, protect your home, and bless you and your family with peace, health, and everlasting prosperity.\"",
         blessing_style
     ))
     elements.append(Spacer(1, 4))
@@ -293,8 +293,8 @@ def generate_pdf_receipt(donation_dict, output_path=None):
     sig_data = [
         [
             Paragraph("<b>Verified By:</b><br/>Mandir Accounts Section<br/>Line Para, Kishanganj", ParagraphStyle('Sig1', fontName='Helvetica', fontSize=8, textColor=colors.HexColor("#6B7280"))),
-            Paragraph("<b>[ DIGITALLY GENERATED SEAL ]</b><br/>SHREE SHREE 108 BURI KALI MANDIR<br/>MANAGEMENT TRUST, KISHANGANJ", ParagraphStyle('Seal', fontName='Helvetica-Bold', fontSize=8, alignment=1, textColor=colors.HexColor("#8B0000"))),
-            Paragraph("<b>Authorized Signatory</b><br/>Secretary / Head Priest<br/>Burhi Kali Mandir Trust", ParagraphStyle('Sig2', fontName='Helvetica', fontSize=8, alignment=2, textColor=colors.HexColor("#6B7280")))
+            Paragraph("<b>[ DIGITALLY GENERATED SEAL ]</b><br/>SHREE SHREE 108 BUDHI KALI MANDIR<br/>MANAGEMENT TRUST, KISHANGANJ", ParagraphStyle('Seal', fontName='Helvetica-Bold', fontSize=8, alignment=1, textColor=colors.HexColor("#8B0000"))),
+            Paragraph("<b>Authorized Signatory</b><br/>Secretary / Head Priest<br/>Budhi Kali Mandir Trust", ParagraphStyle('Sig2', fontName='Helvetica', fontSize=8, alignment=2, textColor=colors.HexColor("#6B7280")))
         ]
     ]
     sig_table = Table(sig_data, colWidths=[170, 180, 170])

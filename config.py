@@ -12,7 +12,7 @@ class Config:
     
     # Mandir Details
     TEMPLE_NAME_HI = "श्री श्री १०८ बूढ़ी काली मंदिर"
-    TEMPLE_NAME_EN = "Shree Shree 108 Buri Kali Mandir"
+    TEMPLE_NAME_EN = "Shree Shree 108 Budhi Kali Mandir (Burhi Kali Mandir)"
     TEMPLE_LOCATION_HI = "लाइन पाड़ा, किशनगंज, बिहार - 855107"
     TEMPLE_LOCATION_EN = "Line Para, Kishanganj, Bihar - 855107"
     TEMPLE_REG_NO = "BR-KSG-BKM/1902-TRUST"

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्री श्री १०८ बूढ़ी काली मंदिर | लाइन पाड़ा, किशनगंज (बिहार) - 855107</title>
-    <meta name="description" content="श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज (बिहार) - 855107 का आधिकारिक वेब पोर्टल एवं दान प्रणाली। 120+ वर्षों का ऐतिहासिक सिद्ध पीठ, नवाब असद रजा की ऐतिहासिक भूमि, Razorpay व Cashfree गेटवे, आरती समय एवं डिजिटल पावती।">
+    <title>श्री श्री १०८ बूढ़ी काली मंदिर | Shree Shree 108 Budhi Kali Mandir (Burhi Kali), Line Para, Kishanganj (Bihar) - 855107</title>
+    <meta name="description" content="श्री श्री १०८ बूढ़ी काली मंदिर (बुढ़िया काली / Burhi Kali Mandir), लाइन पाड़ा, किशनगंज (बिहार) - 855107 का आधिकारिक वेब पोर्टल एवं दान प्रणाली। 120+ वर्षों का ऐतिहासिक सिद्ध पीठ, नवाब असद रजा द्वारा भूमि समर्पण, Razorpay, Cashfree व Direct UPI QR गेटवे, दैनिक आरती समय एवं डिजिटल पावती रसीद।">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,11 +18,14 @@
                             red: '#991B1B',
                             deepred: '#7F1D1D',
                             maroon: '#4C0519',
+                            darkmaroon: '#2B040D',
                             saffron: '#EA580C',
                             amber: '#D97706',
                             gold: '#F59E0B',
+                            brightgold: '#FBBF24',
                             lightgold: '#FEF3C7',
-                            cream: '#FFFBEB'
+                            cream: '#FFFDF7',
+                            parchment: '#FEFCE8'
                         }
                     },
                     fontFamily: {
@@ -30,6 +33,10 @@
                         yatra: ['"Yatra One"', 'cursive'],
                         serif_spiritual: ['"Cinzel"', 'serif'],
                         body: ['"Poppins"', '"Noto Sans Devanagari"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'sacred': '0 10px 25px -5px rgba(136, 19, 55, 0.25), 0 8px 10px -6px rgba(217, 119, 6, 0.2)',
+                        'gold-glow': '0 0 25px rgba(245, 158, 11, 0.45)',
                     }
                 }
             }
@@ -39,32 +46,46 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
     
     <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(217, 119, 6, 0.4), 0 0 30px rgba(136, 19, 55, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 0 50px rgba(153, 27, 27, 0.4); }
+            0%, 100% { box-shadow: 0 0 15px rgba(217, 119, 6, 0.4), 0 0 30px rgba(136, 19, 55, 0.25); }
+            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.75), 0 0 55px rgba(153, 27, 27, 0.4); }
         }
+        @keyframes diyaFlicker {
+            0%, 100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 8px #f59e0b); }
+            50% { transform: scale(1.1) translateY(-2px); filter: drop-shadow(0 0 16px #fbbf24); }
+        }
+        .diya-flame { animation: diyaFlicker 1.8s infinite ease-in-out; }
         .glow-sacred { animation: pulseGlow 3s infinite ease-in-out; }
+        
         .mandir-gradient-hero {
-            background: linear-gradient(135deg, #4c0519 0%, #7f1d1d 35%, #991b1b 60%, #b45309 100%);
+            background: radial-gradient(ellipse at top, #7f1d1d 0%, #4c0519 50%, #200208 100%);
         }
-        .mandir-card-hover {
+        .sacred-filigree {
+            background-image: radial-gradient(#d97706 0.8px, transparent 0.8px), radial-gradient(#881337 0.8px, transparent 0.8px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+        .card-gold-border {
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            background: linear-gradient(180deg, #ffffff 0%, #fffdfa 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .mandir-card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px -5px rgba(136, 19, 55, 0.15), 0 8px 10px -6px rgba(217, 119, 6, 0.1);
+        .card-gold-border:hover {
+            border-color: rgba(217, 119, 6, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px -10px rgba(136, 19, 55, 0.18), 0 8px 12px -6px rgba(217, 119, 6, 0.15);
         }
         @media print {
             body * { visibility: hidden; }
             #printableReceipt, #printableReceipt * { visibility: visible; }
             #printableReceipt {
-                position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20px;
+                position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 24px;
                 box-shadow: none !important; border: 2px solid #881337 !important;
             }
             .no-print { display: none !important; }
@@ -73,218 +94,247 @@
 </head>
 <body class="bg-mandir-cream text-gray-800 font-body flex flex-col min-h-screen selection:bg-mandir-red selection:text-white">
 
-    <!-- GitHub Template Announcement Banner -->
-    <div class="bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 text-white text-xs py-1.5 px-4 font-medium flex items-center justify-between border-b border-yellow-300/40">
-        <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
-            <span class="flex items-center gap-1.5">
-                <i class="fa-brands fa-github text-sm"></i>
-                <b>GitHub Live Template Preview:</b> श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज (बिहार) - 855107
-            </span>
-            <span class="text-[11px] text-yellow-100 flex items-center gap-2">
-                <span>⚡ Python/Flask Backend & ReportLab PDF Ready</span>
-                <span class="hidden md:inline">•</span>
-                <span class="bg-black/30 px-2 py-0.5 rounded text-[10px] font-mono">v1.0.0</span>
-            </span>
-        </div>
-    </div>
-
-    <!-- Top Sacred Bar -->
-    <div class="bg-mandir-maroon text-mandir-lightgold text-xs py-2 px-4 border-b border-mandir-gold/30">
+    <!-- Top Info & Temple Heritage Strip -->
+    <div class="bg-mandir-darkmaroon text-mandir-lightgold text-xs py-2 px-4 border-b border-mandir-gold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-2 font-medium tracking-wide">
-                <span class="text-mandir-gold animate-pulse text-base">ॐ</span>
-                <span class="font-devanagari">॥ ॐ क्रीं कालिकायै नमः ॥</span>
-                <span class="hidden md:inline text-mandir-gold/50">|</span>
-                <span class="hidden md:inline">लाइन पाड़ा, किशनगंज (बिहार) - 855107 | ऐतिहासिक स्थापना 1902</span>
+                <span class="text-amber-400 font-bold text-base animate-pulse">ॐ</span>
+                <span class="font-devanagari text-yellow-300 font-semibold">॥ ॐ क्रीं कालिकायै नमः ॥</span>
+                <span class="hidden md:inline text-amber-500/50">|</span>
+                <span class="hidden md:inline text-mandir-lightgold/90">श्री श्री १०८ बूढ़ी काली मंदिर (बुढ़िया काली / Budhi Kali Mandir), लाइन पाड़ा, किशनगंज (बिहार) - 855107</span>
             </div>
-            <div class="flex items-center gap-4 text-xs">
-                <a href="tel:+916456222108" class="hover:text-white transition flex items-center gap-1">
-                    <i class="fa-solid fa-phone text-mandir-gold"></i> +91 6456 222108
+            <div class="flex items-center gap-3 text-xs">
+                <a href="tel:+916456222108" class="hover:text-yellow-300 transition flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-phone text-amber-400"></i> +91 6456 222108
                 </a>
-                <span class="text-mandir-gold/40">|</span>
-                <button onclick="openReceiptSearchModal()" class="hover:text-white transition flex items-center gap-1 font-semibold text-mandir-gold">
-                    <i class="fa-solid fa-receipt"></i> रसीद सत्यापन
+                <span class="text-amber-500/40">|</span>
+                <button onclick="playTempleBell()" class="hover:text-yellow-300 transition flex items-center gap-1 text-amber-300 font-semibold bg-mandir-maroon/80 px-2 py-0.5 rounded border border-amber-400/30" title="पावन शंख व घंटी नाद">
+                    <i class="fa-solid fa-bell text-amber-400"></i> <span>शंख/घंटी नाद</span>
                 </button>
-                <span class="text-mandir-gold/40">|</span>
-                <div class="flex items-center gap-1 bg-mandir-deepred/60 px-2 py-0.5 rounded border border-mandir-gold/40">
-                    <span id="currentAartiStatus" class="text-mandir-lightgold font-medium">दर्शन जारी है</span>
+                <span class="text-amber-500/40">|</span>
+                <div class="flex items-center gap-1.5 bg-mandir-crimson/70 px-2.5 py-0.5 rounded-full border border-amber-400/40">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="currentAartiStatus" class="text-yellow-200 font-medium text-[11px]">दर्शन कपाट खुले हैं</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b-2 border-mandir-gold/30">
+    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b-2 border-mandir-gold/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Temple Logo & Name -->
-                <a href="#home" class="flex items-center gap-3 group">
-                    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-mandir-crimson via-mandir-red to-mandir-amber flex items-center justify-center text-white shadow-lg border-2 border-mandir-gold p-1.5 transform group-hover:scale-105 transition duration-300">
-                        <div class="w-full h-full rounded-full border border-mandir-lightgold/50 flex items-center justify-center bg-mandir-deepred">
-                            <span class="text-mandir-gold font-bold text-2xl font-serif_spiritual">ॐ</span>
+            <div class="flex justify-between items-center h-22 py-2">
+                
+                <!-- Temple Logo & Name Lockup (Balanced Alignment) -->
+                <a href="#home" class="flex items-center gap-3.5 group">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-mandir-maroon via-mandir-red to-mandir-amber flex items-center justify-center text-white shadow-lg border-2 border-mandir-gold p-1 transform group-hover:scale-105 transition duration-300">
+                        <div class="w-full h-full rounded-full border border-mandir-lightgold/60 flex items-center justify-center bg-mandir-deepred">
+                            <span class="text-amber-300 font-bold text-2xl sm:text-3xl font-serif_spiritual drop-shadow">ॐ</span>
                         </div>
                     </div>
                     <div>
-                        <span class="block font-yatra text-mandir-red text-lg sm:text-2xl leading-tight tracking-tight drop-shadow-sm group-hover:text-mandir-crimson transition">
+                        <span class="block font-yatra text-mandir-maroon text-xl sm:text-2xl lg:text-3xl leading-tight tracking-tight drop-shadow-sm group-hover:text-mandir-red transition">
                             श्री श्री १०८ बूढ़ी काली मंदिर
                         </span>
-                        <span class="block text-[11px] sm:text-xs font-semibold text-gray-600 tracking-wider uppercase font-serif_spiritual">
-                            Line Para, Kishanganj (Bihar) - 855107
+                        <span class="block text-xs font-semibold text-gray-700 tracking-wider uppercase font-serif_spiritual">
+                            Shree Shree 108 Budhi Kali Mandir (Burhi Kali)
+                        </span>
+                        <span class="block text-[10px] text-mandir-saffron font-medium">
+                            लाइन पाड़ा, किशनगंज, बिहार - 855107 | स्थापना 1902
                         </span>
                     </div>
                 </a>
 
                 <!-- Desktop Nav Links -->
-                <nav class="hidden lg:flex items-center gap-1 xl:gap-2 font-medium text-sm text-gray-700">
-                    <a href="#home" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition font-bold text-mandir-red">मुख्य पृष्ठ</a>
-                    <a href="#history" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">इतिहास व महिमा</a>
-                    <a href="#darshan" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">दर्शन व आरती</a>
-                    <a href="#donate" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">ऑनलाइन दान सेवा</a>
-                    <a href="#puja" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">पूजा संकल्प</a>
-                    <a href="#gallery" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">चित्र दीर्घा</a>
-                    <a href="#contact" class="px-3 py-2 rounded-lg hover:text-mandir-red hover:bg-mandir-gold/10 transition">संपर्क व मार्ग</a>
+                <nav class="hidden xl:flex items-center gap-2 font-medium text-sm text-gray-700">
+                    <a href="#home" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition font-bold text-mandir-red">मुख्य पृष्ठ</a>
+                    <a href="#history" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">इतिहास व महिमा</a>
+                    <a href="#darshan" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">दर्शन व आरती</a>
+                    <a href="#donate" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">ऑनलाइन दान सेवा</a>
+                    <a href="#puja" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">पूजा संकल्प</a>
+                    <a href="#gallery" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">चित्र दीर्घा</a>
+                    <a href="#contact" class="px-3 py-2 rounded-xl hover:text-mandir-red hover:bg-mandir-lightgold/60 transition">मार्ग व संपर्क</a>
                 </nav>
 
                 <!-- Action CTA & Mobile Trigger -->
                 <div class="flex items-center gap-3">
-                    <a href="#donate" class="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-mandir-red via-mandir-saffron to-mandir-amber shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border border-mandir-gold/40">
-                        <i class="fa-solid fa-hands-praying text-yellow-200"></i>
+                    <a href="#donate" class="relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-mandir-red via-mandir-saffron to-mandir-amber shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-yellow-300">
+                        <i class="fa-solid fa-hands-praying text-yellow-200 text-base"></i>
                         <span>दान करें / Donate</span>
-                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-yellow-400"></span>
                         </span>
                     </a>
 
-                    <!-- Mobile Menu Button -->
-                    <button id="mobileMenuBtn" type="button" class="lg:hidden p-2 text-gray-700 hover:text-mandir-red focus:outline-none" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                    <button id="mobileMenuBtn" type="button" class="xl:hidden p-2.5 rounded-xl bg-gray-100 text-gray-800 hover:text-mandir-red focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Drawer -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-mandir-gold/30 px-4 pt-2 pb-6 space-y-1 shadow-xl">
-            <a href="#home" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">मुख्य पृष्ठ (Home)</a>
-            <a href="#history" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">इतिहास एवं महिमा (History)</a>
-            <a href="#darshan" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">दर्शन व आरती समय (Darshan Timings)</a>
-            <a href="#donate" class="block px-3 py-2.5 rounded-md font-bold text-mandir-red bg-mandir-lightgold">ऑनलाइन दान सेवा (Razorpay / Cashfree / UPI)</a>
-            <a href="#puja" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">पूजा एवं भोग संकल्प (Puja Booking)</a>
-            <a href="#gallery" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">चित्र दीर्घा (Gallery)</a>
-            <a href="#contact" class="block px-3 py-2.5 rounded-md font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">संपर्क व मार्ग (Contact & Map)</a>
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden xl:hidden bg-white border-t border-mandir-gold/30 px-4 pt-3 pb-6 space-y-1.5 shadow-2xl">
+            <a href="#home" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">मुख्य पृष्ठ (Home)</a>
+            <a href="#history" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">इतिहास एवं महिमा (120+ Years History)</a>
+            <a href="#darshan" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">दर्शन व आरती समय (Aarti Schedule)</a>
+            <a href="#donate" class="block px-3.5 py-2.5 rounded-xl font-bold text-mandir-red bg-mandir-lightgold/80 border border-mandir-gold/40">ऑनलाइन दान सेवा (Razorpay, Cashfree & UPI)</a>
+            <a href="#puja" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">पूजा एवं भोग संकल्प (Online Puja)</a>
+            <a href="#gallery" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">चित्र दीर्घा (Photo Gallery)</a>
+            <a href="#contact" class="block px-3.5 py-2.5 rounded-xl font-medium text-gray-800 hover:bg-mandir-lightgold hover:text-mandir-red">मार्ग एवं संपर्क (Contact & Location Map)</a>
         </div>
     </header>
 
-    <!-- 1. Hero Section -->
+    <!-- SECTION 1: Grand Spiritual Hero Section -->
     <section id="home" class="relative mandir-gradient-hero text-white overflow-hidden py-16 sm:py-24 border-b-4 border-mandir-gold">
+        <!-- Sacred ambient backdrop -->
+        <div class="absolute inset-0 opacity-10 sacred-filigree pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-red-600/20 blur-3xl pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                 
-                <!-- Left Hero Content -->
+                <!-- Left Hero Text & Call to Action (Precision Alignment) -->
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-yellow-400/50 text-xs text-yellow-300 font-semibold tracking-wide">
-                        <span class="animate-pulse">✨</span>
-                        <span>120+ वर्षों से सीमांचल का प्रसिद्ध सिद्ध पीठ (स्थापना वर्ष 1902)</span>
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/50 border border-yellow-400/50 text-xs text-yellow-300 font-semibold tracking-wide shadow-md">
+                        <span class="diya-flame inline-block">🪔</span>
+                        <span>सीमांचल का 120+ वर्ष पुराना जाग्रत सिद्ध पीठ (स्थापना वर्ष 1902)</span>
                     </div>
 
-                    <h1 class="font-yatra text-3xl sm:text-5xl lg:text-6xl text-yellow-300 leading-tight drop-shadow-md">
-                        श्री श्री १०८ बूढ़ी काली मंदिर
-                    </h1>
-                    
-                    <p class="font-serif_spiritual text-base sm:text-xl text-yellow-100/90 tracking-wide font-medium">
-                        Shree Shree 108 Buri Kali Mandir, Line Para, Kishanganj (Bihar) - 855107
+                    <div class="space-y-2">
+                        <h1 class="font-yatra text-4xl sm:text-5xl lg:text-6xl text-amber-300 leading-tight drop-shadow-lg">
+                            श्री श्री १०८ बूढ़ी काली मंदिर
+                        </h1>
+                        <p class="font-serif_spiritual text-base sm:text-xl text-yellow-100 font-bold tracking-wide">
+                            Shree Shree 108 Budhi Kali Mandir <span class="text-amber-300 font-normal text-sm sm:text-base">(Burhi Kali)</span>
+                        </p>
+                        <p class="text-xs sm:text-sm text-yellow-200/90 font-medium">
+                            <i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> लाइन पाड़ा, किशनगंज (बिहार) - 855107
+                        </p>
+                    </div>
+
+                    <p class="text-sm sm:text-base text-yellow-50/90 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        किशनगंज के लाइन पाड़ा में स्थित मां बूढ़ी काली का यह पावन दरबार अत्यंत जाग्रत और मनोकामना पूर्ण करने वाली सिद्ध पीठ के रूप में विख्यात है। 
+                        <b>नवाब असद रजा</b> द्वारा भूमि समर्पण से पोषित गंगा-जमुनी सद्भाव और वर्ष में एक बार नई प्रतिमा स्थापना की पावन परंपरा।
                     </p>
 
-                    <p class="text-sm sm:text-base text-yellow-50/90 font-light leading-relaxed max-w-2xl">
-                        किशनगंज के लाइन पाड़ा में स्थित मां बूढ़ी काली का यह पावन दरबार अत्यंत जाग्रत और मनोकामना पूर्ण करने वाली सिद्ध पीठ के रूप में विख्यात है। नवाब असद रजा द्वारा भूमि समर्पण से पोषित गंगा-जमुनी सद्भाव और वर्ष में एक बार नई प्रतिमा स्थापना की दिव्य परंपरा।
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#donate" class="px-7 py-3.5 rounded-full font-bold text-base text-mandir-maroon bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-yellow-200 flex items-center gap-2">
+                    <!-- CTA Buttons Row -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#donate" class="px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-mandir-maroon bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-yellow-200 flex items-center gap-2.5">
                             <i class="fa-solid fa-hands-praying text-mandir-red text-lg"></i>
-                            <span>ऑनलाइन दान करें (Razorpay / Cashfree / UPI)</span>
+                            <span>ऑनलाइन दान करें (Donate Now)</span>
                         </a>
                         
-                        <a href="#darshan" class="px-6 py-3.5 rounded-full font-semibold text-sm text-yellow-200 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-yellow-400/40 transition flex items-center gap-2">
+                        <a href="#darshan" class="px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm text-yellow-200 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-yellow-400/40 transition flex items-center gap-2">
                             <i class="fa-solid fa-clock text-yellow-400"></i>
                             <span>आरती व दर्शन समय</span>
                         </a>
 
-                        <a href="#history" class="px-6 py-3.5 rounded-full font-semibold text-sm text-yellow-200 hover:text-white transition flex items-center gap-2 underline underline-offset-4">
+                        <a href="#history" class="px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm text-yellow-200 hover:text-white transition flex items-center gap-2 underline underline-offset-4">
                             <i class="fa-solid fa-book-open text-yellow-400"></i>
-                            <span>120 वर्षों का इतिहास पढ़ें</span>
+                            <span>120 वर्षों का इतिहास</span>
                         </a>
                     </div>
 
-                    <!-- Trust Points -->
-                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-yellow-400/20 text-center lg:text-left">
-                        <div>
-                            <span class="block text-xl sm:text-2xl font-bold font-mono text-yellow-300">120+</span>
-                            <span class="text-[11px] text-yellow-100/70">वर्षों का इतिहास (1902)</span>
+                    <!-- Metrics / Trust Badges (Neatly Grid-Aligned) -->
+                    <div class="pt-6 grid grid-cols-3 gap-3 border-t border-yellow-400/20 text-center">
+                        <div class="p-3 rounded-2xl bg-black/25 border border-yellow-400/20">
+                            <span class="block text-xl sm:text-2xl font-bold font-mono text-amber-300">120+</span>
+                            <span class="text-[11px] text-yellow-100/80">वर्षों का इतिहास (1902)</span>
                         </div>
-                        <div>
-                            <span class="block text-xl sm:text-2xl font-bold font-mono text-yellow-300">100%</span>
-                            <span class="text-[11px] text-yellow-100/70">Razorpay / Cashfree सुरक्षित</span>
+                        <div class="p-3 rounded-2xl bg-black/25 border border-yellow-400/20">
+                            <span class="block text-xl sm:text-2xl font-bold font-mono text-amber-300">100%</span>
+                            <span class="text-[11px] text-yellow-100/80">Razorpay / Cashfree</span>
                         </div>
-                        <div>
-                            <span class="block text-xl sm:text-2xl font-bold font-mono text-yellow-300">तत्काल</span>
-                            <span class="text-[11px] text-yellow-100/70">डिजिटल 80G पावती रसीद</span>
+                        <div class="p-3 rounded-2xl bg-black/25 border border-yellow-400/20">
+                            <span class="block text-xl sm:text-2xl font-bold font-mono text-amber-300">तत्काल</span>
+                            <span class="text-[11px] text-yellow-100/80">डिजिटल 80G रसीद</span>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- Right Hero Card: Quick Darshan & Daily Seva -->
+                <!-- Right Hero Card: Aarti Schedule & Live Darshan -->
                 <div class="lg:col-span-5">
-                    <div class="bg-black/60 backdrop-blur-md rounded-3xl p-6 sm:p-8 border-2 border-mandir-gold shadow-2xl relative">
-                        <div class="absolute -top-4 -right-4 bg-mandir-red text-yellow-300 text-xs font-bold px-3 py-1 rounded-full border border-yellow-400 shadow">
-                            पावन दर्शन सूचना
-                        </div>
-
-                        <div class="text-center pb-6 border-b border-mandir-gold/20">
-                            <div class="w-20 h-20 mx-auto rounded-full bg-mandir-red/80 flex items-center justify-center border-2 border-yellow-400 mb-3 shadow-inner glow-sacred">
-                                <i class="fa-solid fa-fire text-yellow-300 text-3xl"></i>
+                    <div class="bg-black/65 backdrop-blur-md rounded-3xl p-6 sm:p-8 border-2 border-mandir-gold shadow-2xl relative glow-sacred">
+                        
+                        <!-- Header badge -->
+                        <div class="flex items-center justify-between pb-5 border-b border-mandir-gold/30">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-mandir-red/80 flex items-center justify-center border border-yellow-400 text-yellow-300 text-2xl">
+                                    <i class="fa-solid fa-bell animate-bounce"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="font-yatra text-xl text-yellow-300">दैनिक आरती व भोग समय</h3>
+                                    <p class="text-[11px] text-yellow-100/70">लाइन पाड़ा मंदिर, किशनगंज (855107)</p>
+                                </div>
                             </div>
-                            <h3 class="font-yatra text-2xl text-yellow-300">दैनिक आरती एवं भोग समय</h3>
-                            <p class="text-xs text-yellow-100/80 mt-1">लाइन पाड़ा मंदिर परिसर, किशनगंज (बिहार)</p>
+                            <span class="text-[10px] bg-mandir-red px-2.5 py-1 rounded-full text-yellow-200 border border-yellow-400/40 font-bold">
+                                नित्य दर्शन
+                            </span>
                         </div>
 
-                        <div class="py-5 space-y-3.5 text-xs">
-                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 border border-yellow-400/20">
-                                <span class="font-medium text-yellow-100 flex items-center gap-2">
-                                    <i class="fa-solid fa-sun text-yellow-400"></i> मंगला आरती (प्रातः)
-                                </span>
+                        <!-- Schedule Items with precise spacing & alignment -->
+                        <div class="py-5 space-y-3 text-xs text-left">
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-yellow-400/20 hover:border-yellow-400/40 transition">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400">
+                                        <i class="fa-solid fa-sun"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-bold text-white block">मंगला आरती (प्रातः)</span>
+                                        <span class="text-[10px] text-yellow-100/60">कपाट खुलने के उपरांत प्रथम स्तुति</span>
+                                    </div>
+                                </div>
                                 <span class="font-bold text-yellow-300 font-mono text-sm">06:00 AM</span>
                             </div>
 
-                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 border border-yellow-400/20">
-                                <span class="font-medium text-yellow-100 flex items-center gap-2">
-                                    <i class="fa-solid fa-bowl-food text-yellow-400"></i> मध्याह्न राजभोग आरती
-                                </span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-yellow-400/20 hover:border-yellow-400/40 transition">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400">
+                                        <i class="fa-solid fa-bowl-food"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-bold text-white block">मध्याह्न राजभोग आरती</span>
+                                        <span class="text-[10px] text-yellow-100/60">अन्न-भोग एवं महाआरती</span>
+                                    </div>
+                                </div>
                                 <span class="font-bold text-yellow-300 font-mono text-sm">12:00 PM</span>
                             </div>
 
-                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-mandir-red/50 border border-yellow-400/50">
-                                <span class="font-bold text-white flex items-center gap-2">
-                                    <i class="fa-solid fa-bell text-yellow-300 animate-bounce"></i> संध्या महाआरती (मुख्य)
-                                </span>
-                                <span class="font-bold text-yellow-300 font-mono text-sm">07:00 PM</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-red/60 border-2 border-yellow-400 shadow-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-lg bg-yellow-400 flex items-center justify-center text-mandir-maroon">
+                                        <i class="fa-solid fa-bell"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-bold text-white block">संध्या महाआरती (मुख्य)</span>
+                                        <span class="text-[10px] text-yellow-200">शंख, घंटा एवं 108 दीप महाआरती</span>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-yellow-300 font-mono text-base">07:00 PM</span>
                             </div>
 
-                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-white/5 border border-yellow-400/20">
-                                <span class="font-medium text-yellow-100 flex items-center gap-2">
-                                    <i class="fa-solid fa-moon text-yellow-400"></i> शयन आरती व कपाट बंदी
-                                </span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-yellow-400/20 hover:border-yellow-400/40 transition">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400">
+                                        <i class="fa-solid fa-moon"></i>
+                                    </span>
+                                    <div>
+                                        <span class="font-bold text-white block">शयन आरती व कपाट बंदी</span>
+                                        <span class="text-[10px] text-yellow-100/60">रात्रि शयन स्तुति</span>
+                                    </div>
+                                </div>
                                 <span class="font-bold text-yellow-300 font-mono text-sm">09:15 PM</span>
                             </div>
                         </div>
 
-                        <div class="pt-2 text-center">
-                            <a href="#donate" class="w-full block py-3 rounded-xl bg-gradient-to-r from-mandir-saffron to-mandir-red font-bold text-white text-sm hover:brightness-110 transition shadow-lg border border-yellow-400/40">
-                                <i class="fa-solid fa-hand-holding-dollar mr-1.5"></i> आज के भोग या दीप सेवा का संकल्प लें
-                            </a>
-                        </div>
+                        <a href="#donate" class="w-full block py-3.5 rounded-2xl bg-gradient-to-r from-mandir-saffron to-mandir-red font-bold text-white text-sm hover:brightness-110 transition shadow-lg border border-yellow-400/40 text-center">
+                            <i class="fa-solid fa-hand-holding-dollar mr-1.5 text-yellow-300"></i> आज के नित्य भोग या दीप सेवा का संकल्प लें
+                        </a>
                     </div>
                 </div>
 
@@ -292,203 +342,324 @@
         </div>
     </section>
 
-    <!-- Running Notices Ticker -->
+    <!-- Running Notices Ticker Bar -->
     <section class="bg-mandir-gold text-mandir-maroon py-3 px-4 font-semibold text-xs border-b border-mandir-amber">
         <div class="max-w-7xl mx-auto flex items-center gap-4">
-            <span class="bg-mandir-maroon text-white px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shrink-0 flex items-center gap-1">
+            <span class="bg-mandir-maroon text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shrink-0 flex items-center gap-1.5 shadow-sm">
                 <i class="fa-solid fa-bullhorn animate-pulse"></i> मंदिर सूचना
             </span>
             <div class="overflow-hidden whitespace-nowrap w-full">
                 <div class="inline-block animate-marquee space-x-8">
                     <span><b class="text-mandir-red">वार्षिक श्री श्री १०८ बूढ़ी काली पूजा महोत्सव (दीपावली/कार्तिक अमावस्या):</b> रात्रि १२ बजे से तांत्रिक व वैदिक निशि पूजा एवं महाप्रसाद वितरण।</span>
-                    <span class="text-mandir-maroon/40">✦</span>
+                    <span class="text-mandir-maroon/50">✦</span>
                     <span><b class="text-mandir-red">प्रतिमा दान की पवित्र परंपरा:</b> मन्नत पूर्ण होने पर आगामी वर्षों के लिए मूर्ति दान की प्रतीक्षा सूची मंदिर कार्यालय अथवा ऑनलाइन संकल्प फॉर्म द्वारा दर्ज की जा सकती है।</span>
+                    <span class="text-mandir-maroon/50">✦</span>
+                    <span><b class="text-mandir-red">मासिक अमावस्या महापूजन:</b> प्रत्येक कृष्ण पक्ष अमावस्या को विशेष शांति हवन व महाआरती।</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. History Section (120+ Years Legacy) -->
-    <section id="history" class="py-16 sm:py-20 bg-white border-b border-gray-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-3.5 py-1.5 rounded-full border border-mandir-gold/30">
-                    ऐतिहासिक सिद्ध पीठ (स्थापना वर्ष 1902)
+    <!-- SECTION 2: Authentic 120-Year History (Line Para, Kishanganj) -->
+    <section id="history" class="py-16 sm:py-24 bg-white border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <!-- Section Header (Balanced Centering) -->
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-4 py-1.5 rounded-full border border-mandir-gold/40 inline-block">
+                    ऐतिहासिक धरोहर एवं महिमा (स्थापना 1902)
                 </span>
-                <h2 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon mt-3 mb-4">
-                    बूढ़ी काली मंदिर लाइन पाड़ा का 120+ वर्षों का इतिहास
+                <h2 class="font-yatra text-3xl sm:text-4xl lg:text-5xl text-mandir-maroon leading-tight">
+                    बूढ़ी काली मंदिर का 120+ वर्षों का पावन इतिहास
                 </h2>
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    किशनगंज का यह प्राचीन मंदिर केवल एक पूजा स्थल नहीं, अपितु 120 वर्षों से निरंतर बहती आस्था, सर्वधर्म सद्भाव और पूर्ण होती मनोकामनाओं का जाग्रत केंद्र है।
+                <div class="flex items-center justify-center gap-3 text-mandir-amber text-sm font-serif_spiritual">
+                    <span>❖</span><span class="h-0.5 w-16 bg-mandir-gold/60"></span>
+                    <span class="font-bold">लाइन पाड़ा, किशनगंज (बिहार) - 855107</span>
+                    <span class="h-0.5 w-16 bg-mandir-gold/60"></span><span>❖</span>
+                </div>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    किशनगंज का यह प्राचीन मंदिर केवल एक पूजा स्थल नहीं, अपितु 120 वर्षों से निरंतर बहती आस्था, सर्वधर्म सद्भाव और पूर्ण होती मनोकामनाओं का जाग्रत सिद्ध पीठ है।
                 </p>
             </div>
 
-            <!-- Nawab Asad Raza Feature Card -->
-            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 sm:p-10 shadow-lg border-2 border-mandir-gold">
-                <div class="flex items-center gap-4 mb-6 pb-4 border-b border-mandir-gold/30">
-                    <span class="w-12 h-12 rounded-2xl bg-mandir-amber text-white flex items-center justify-center font-bold text-xl shadow">
+            <!-- Nawab Asad Raza Land Endowment Feature Card -->
+            <div class="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100/60 rounded-3xl p-8 sm:p-10 shadow-xl border-2 border-mandir-gold relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-amber-400/10 pointer-events-none"></div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 pb-5 border-b border-mandir-gold/30">
+                    <span class="w-14 h-14 rounded-2xl bg-mandir-amber text-white flex items-center justify-center font-bold text-2xl shadow-md shrink-0">
                         <i class="fa-solid fa-handshake"></i>
                     </span>
                     <div>
-                        <h3 class="font-yatra text-2xl text-mandir-maroon">नवाब असद रजा द्वारा भूमि समर्पण: गंगा-जमुनी तहज़ीब का प्रतीक</h3>
-                        <p class="text-xs text-amber-800 font-medium">सीमांचल में सांप्रदायिक सौहार्द एवं आपसी भाईचारे की मिसाल</p>
+                        <h3 class="font-yatra text-2xl sm:text-3xl text-mandir-maroon">
+                            नवाब असद रजा द्वारा भूमि समर्पण: गंगा-जमुनी तहज़ीब का अमर प्रतीक
+                        </h3>
+                        <p class="text-xs sm:text-sm text-amber-900 font-semibold mt-0.5">
+                            सीमांचल में सांप्रदायिक सौहार्द एवं आपसी भाईचारे की अद्वितीय ऐतिहासिक मिसाल
+                        </p>
                     </div>
                 </div>
+
                 <div class="text-sm text-gray-800 leading-relaxed space-y-4">
                     <p>
-                        इस मंदिर के इतिहास का सबसे प्रेरक और गौरवमयी पक्ष यह है कि मंदिर निर्माण के लिए भूमि तत्कालीन स्थानीय शासक <b>नवाब असद रजा</b> के राज-परिवार द्वारा दान स्वरूप प्रदान की गई थी।
+                        इस ऐतिहासिक मंदिर का सबसे प्रेरक और गौरवमयी पक्ष यह है कि मंदिर निर्माण के लिए भूमि तत्कालीन स्थानीय शासक <b>नवाब असद रजा</b> के राज-परिवार द्वारा दान स्वरूप समर्पित की गई थी।
                     </p>
                     <p>
                         उस ऐतिहासिक दौर में नवाब असद रजा द्वारा हिंदू श्रद्धालुओं की आस्था का सम्मान करते हुए मां काली के मंदिर हेतु लाइन पाड़ा की यह पावन भूमि सहर्ष सौंपना, किशनगंज और संपूर्ण सीमांचल की उस गंगा-जमुनी संस्कृति का सजीव प्रमाण है जहां धार्मिक विविधता के बीच आपसी सौहार्द और सम्मान सदैव सर्वोपरि रहा है।
                     </p>
+                    <div class="p-4 bg-white/85 rounded-2xl border border-amber-300 text-xs italic text-gray-700 shadow-sm">
+                        "नवाब असद रजा द्वारा भूमि दान की यह ऐतिहासिक घटना आज भी हर किशनगंजवासी के लिए गर्व का विषय है, जो यह संदेश देती है कि ईश्वर और सच्ची आस्था किसी भेदभाव की मोहताज नहीं।"
+                    </div>
                 </div>
             </div>
 
-            <!-- 4 Pillars Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 4 Pillars of Tradition Grid (Uniform card height & aligned layout) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 
                 <!-- Pillar 1 -->
-                <div class="bg-mandir-cream/60 rounded-2xl p-6 border border-mandir-gold/30 space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-mandir-crimson text-yellow-300 flex items-center justify-center font-bold text-base">
-                            1902
-                        </span>
-                        <h4 class="font-yatra text-lg text-mandir-maroon">बांस-टाटी से भव्य मंदिर तक</h4>
+                <div class="card-gold-border rounded-3xl p-7 flex flex-col justify-between space-y-4 shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-11 h-11 rounded-xl bg-mandir-crimson text-yellow-300 flex items-center justify-center font-bold text-lg font-mono shadow">
+                                1902
+                            </span>
+                            <h4 class="font-yatra text-xl text-mandir-maroon">बांस-टाटी की कुटिया से भव्य स्वरूप</h4>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            वर्ष 1902 में बांस और टाटी (घास-फूस) की एक छोटी कुटिया में मां काली की प्रतिमा स्थापित कर पूजा आरंभ हुई। उस समय पूजा के एक दिन बाद प्रतिमा विसर्जित होती थी। समय के साथ स्थानीय समाज के सहयोग से पहले टीन और फिर वर्तमान विशाल भव्य मंदिर का निर्माण हुआ।
+                        </p>
                     </div>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        वर्ष 1902 में बांस और टाटी (घास-फूस) की कुटिया में मां काली की प्रतिमा स्थापित कर पूजा आरंभ हुई। समय के साथ स्थानीय समाज के सहयोग से पहले टीन और फिर वर्तमान विशाल भव्य मंदिर का निर्माण हुआ।
-                    </p>
+                    <div class="pt-3 border-t border-amber-200/60 text-[11px] font-semibold text-mandir-red">
+                        <i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> 120 वर्षों से अखंड पूजा का इतिहास
+                    </div>
                 </div>
 
                 <!-- Pillar 2 -->
-                <div class="bg-mandir-cream/60 rounded-2xl p-6 border border-mandir-gold/30 space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-mandir-red text-yellow-300 flex items-center justify-center font-bold text-base">
-                            <i class="fa-solid fa-crown"></i>
-                        </span>
-                        <h4 class="font-yatra text-lg text-mandir-maroon">वार्षिक मूर्ति दान की अनूठी परंपरा</h4>
+                <div class="card-gold-border rounded-3xl p-7 flex flex-col justify-between space-y-4 shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-11 h-11 rounded-xl bg-mandir-red text-yellow-300 flex items-center justify-center font-bold text-lg shadow">
+                                <i class="fa-solid fa-crown"></i>
+                            </span>
+                            <h4 class="font-yatra text-xl text-mandir-maroon">वार्षिक मूर्ति दान की अनूठी परंपरा</h4>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            माता की पावन प्रतिमा पूरे <b>एक वर्ष</b> तक गर्भगृह में विराजमान रहती है। प्रत्येक कार्तिक अमावस्या (दीपावली) को पुरानी प्रतिमा का विसर्जन कर उसी रात नई प्रतिमा की प्राण-प्रतिष्ठा होती है। मन्नत पूर्ण होने पर प्रतिमा दान करने के लिए भक्तों में वर्षों की प्रतीक्षा सूची (Waiting List) रहती है।
+                        </p>
                     </div>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        माता की प्रतिमा पूरे एक वर्ष तक गर्भगृह में विराजमान रहती है। प्रत्येक कार्तिक अमावस्या को विसर्जन उपरांत नई प्रतिमा स्थापित होती है, जिसके दान हेतु भक्तों में वर्षों की प्रतीक्षा सूची (Waiting List) रहती है।
-                    </p>
+                    <div class="pt-3 border-t border-amber-200/60 text-[11px] font-semibold text-mandir-red">
+                        <i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> वर्ष भर गर्भगृह में दर्शन की दुर्लभ परंपरा
+                    </div>
                 </div>
 
                 <!-- Pillar 3 -->
-                <div class="bg-mandir-cream/60 rounded-2xl p-6 border border-mandir-gold/30 space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-mandir-saffron text-white flex items-center justify-center font-bold text-base">
-                            <i class="fa-solid fa-hands-praying"></i>
-                        </span>
-                        <h4 class="font-yatra text-lg text-mandir-maroon">जाग्रत मनोकामना सिद्ध पीठ</h4>
+                <div class="card-gold-border rounded-3xl p-7 flex flex-col justify-between space-y-4 shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-11 h-11 rounded-xl bg-mandir-saffron text-white flex items-center justify-center font-bold text-lg shadow">
+                                <i class="fa-solid fa-hands-praying"></i>
+                            </span>
+                            <h4 class="font-yatra text-xl text-mandir-maroon">जाग्रत मनोकामना सिद्ध पीठ</h4>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            सच्चे हृदय से मांगी गई कोई भी मनोकामना मां के दरबार से अधूरी नहीं रहती। विवाह में बाधा निवारण, आरोग्य, संतान प्राप्ति एवं व्यापारिक वृद्धि हेतु बिहार, बंगाल (सिलीगुड़ी, इस्लामपुर, दालखोला), असम एवं नेपाल से हजारों श्रद्धालु शीश नवाने आते हैं।
+                        </p>
                     </div>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        सच्चे हृदय से मांगी गई कोई भी मनोकामना अधूरी नहीं रहती। विवाह में बाधा निवारण, आरोग्य, संतान एवं समृद्धि हेतु बिहार, बंगाल (सिलीगुड़ी, दिनाजपुर), नेपाल व असम से हजारों श्रद्धालु पहुंचते हैं।
-                    </p>
+                    <div class="pt-3 border-t border-amber-200/60 text-[11px] font-semibold text-mandir-red">
+                        <i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> मनोकामना पूर्ण होने पर चुनरी व नारियल अर्पण
+                    </div>
                 </div>
 
                 <!-- Pillar 4 -->
-                <div class="bg-mandir-cream/60 rounded-2xl p-6 border border-mandir-gold/30 space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-xl bg-mandir-amber text-white flex items-center justify-center font-bold text-base">
-                            <i class="fa-solid fa-award"></i>
-                        </span>
-                        <h4 class="font-yatra text-lg text-mandir-maroon">वंशानुगत पुरोहित व राष्ट्रीय पहचान</h4>
+                <div class="card-gold-border rounded-3xl p-7 flex flex-col justify-between space-y-4 shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-11 h-11 rounded-xl bg-mandir-amber text-white flex items-center justify-center font-bold text-lg shadow">
+                                <i class="fa-solid fa-award"></i>
+                            </span>
+                            <h4 class="font-yatra text-xl text-mandir-maroon">वंशानुगत पुरोहित व राष्ट्रीय गरिमा</h4>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            स्थापना काल से ही एक ही पुरोहित परिवार की कई पीढ़ियां मुख्य पुजारी के रूप में मां की सेवा व तांत्रिक-वैदिक निशि पूजा संपन्न कराती आ रही हैं। सितंबर 2022 में भारत के केंद्रीय गृह मंत्री अमित शाह ने भी यहां विधिवत षोडशोपचार पूजा-अर्चना की थी।
+                        </p>
                     </div>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        स्थापना काल से ही एक ही पुरोहित परिवार की पीढ़ियां मुख्य पुजारी के रूप में मां की सेवा कर रही हैं। सितंबर 2022 में देश के केंद्रीय गृह मंत्री अमित शाह ने भी यहां विधिवत पूजा-अर्चना की थी।
-                    </p>
+                    <div class="pt-3 border-t border-amber-200/60 text-[11px] font-semibold text-mandir-red">
+                        <i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> राष्ट्रीय ख्याति एवं गौरवमयी परंपरा
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- 3. Darshan & Aarti Schedule Section -->
-    <section id="darshan" class="py-16 bg-mandir-cream/40 border-b border-gray-200">
+    <!-- SECTION 3: Aarti & Darshan Schedule -->
+    <section id="darshan" class="py-16 sm:py-20 bg-mandir-cream/50 border-b border-gray-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-            <div class="text-center max-w-2xl mx-auto">
-                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-3.5 py-1.5 rounded-full border border-mandir-gold/30">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-4 py-1.5 rounded-full border border-mandir-gold/40 inline-block">
                     नित्य दर्शन एवं पावन अनुष्ठान
                 </span>
-                <h2 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon mt-3">
-                    दैनिक दर्शन एवं आरती समय सारिणी
-                </h2>
-                <p class="text-xs sm:text-sm text-gray-600 mt-2">
-                    लाइन पाड़ा, किशनगंज स्थित मंदिर परिसर में नित्य होने वाली आरतियों एवं विशेष पर्वों के दर्शन समय।
+                <h3 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon">
+                    दैनिक दर्शन एवं महाआरती समय सारिणी
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600">
+                    लाइन पाड़ा मंदिर परिसर में नित्य होने वाली आरतियों, भोग एवं विशेष पर्वों के दर्शन समय।
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Morning -->
-                <div class="bg-white rounded-3xl p-8 shadow-lg border-2 border-mandir-gold/30 space-y-4">
-                    <h3 class="font-yatra text-xl text-mandir-maroon pb-3 border-b flex items-center gap-2">
-                        <i class="fa-solid fa-sun text-amber-500"></i> प्रातःकालीन दर्शन (05:30 AM - 12:30 PM)
-                    </h3>
-                    <div class="space-y-3 text-xs">
-                        <div class="flex justify-between p-3 rounded-xl bg-mandir-cream">
-                            <span>मंगला आरती (प्रातः)</span>
-                            <b class="font-mono text-mandir-red text-sm">06:00 AM</b>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Morning Aarti Card -->
+                <div class="bg-white rounded-3xl p-7 shadow-lg border-2 border-mandir-gold/30 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center gap-3 pb-4 mb-4 border-b border-gray-100">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl shadow-inner">
+                                <i class="fa-solid fa-sun"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-yatra text-xl text-mandir-maroon">प्रातःकालीन दर्शन (Morning)</h4>
+                                <p class="text-xs text-gray-500">कपाट खुलने का समय: 05:30 AM</p>
+                            </div>
                         </div>
-                        <div class="flex justify-between p-3 rounded-xl bg-mandir-cream">
-                            <span>मध्याह्न राजभोग आरती</span>
-                            <b class="font-mono text-mandir-red text-sm">12:00 PM</b>
-                        </div>
-                        <div class="flex justify-between p-3 rounded-xl bg-gray-50 text-gray-500">
-                            <span>मध्याह्न कपाट बंदी (विश्राम)</span>
-                            <b class="font-mono text-gray-600 text-sm">12:30 PM</b>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-cream border border-mandir-gold/30">
+                                <div>
+                                    <span class="font-bold text-mandir-maroon text-sm block">प्रातः कपाट खुलना</span>
+                                    <span class="text-gray-500">गर्भगृह का पावन द्वार खुलता है</span>
+                                </div>
+                                <span class="font-bold font-mono text-mandir-red text-base">05:30 AM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-cream border border-mandir-gold/30">
+                                <div>
+                                    <span class="font-bold text-mandir-maroon text-sm block">मंगला आरती</span>
+                                    <span class="text-gray-500">प्रथम स्तुति एवं धूप-दीप दर्शन</span>
+                                </div>
+                                <span class="font-bold font-mono text-mandir-red text-base">06:00 AM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-cream border border-mandir-gold/30">
+                                <div>
+                                    <span class="font-bold text-mandir-maroon text-sm block">मध्याह्न राजभोग आरती</span>
+                                    <span class="text-gray-500">नैवेद्य अर्पण एवं महाप्रसाद</span>
+                                </div>
+                                <span class="font-bold font-mono text-mandir-red text-base">12:00 PM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-gray-50 text-gray-500 border border-gray-200">
+                                <div>
+                                    <span class="font-bold text-gray-700 text-sm block">मध्याह्न कपाट बंदी (विश्राम)</span>
+                                    <span class="text-gray-500">दोपहर विश्राम काल</span>
+                                </div>
+                                <span class="font-bold font-mono text-gray-600 text-base">12:30 PM</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Evening -->
-                <div class="bg-white rounded-3xl p-8 shadow-lg border-2 border-mandir-gold/30 space-y-4">
-                    <h3 class="font-yatra text-xl text-mandir-maroon pb-3 border-b flex items-center gap-2">
-                        <i class="fa-solid fa-moon text-indigo-700"></i> सायंकालीन दर्शन (04:30 PM - 09:30 PM)
-                    </h3>
-                    <div class="space-y-3 text-xs">
-                        <div class="flex justify-between p-3 rounded-xl bg-mandir-cream">
-                            <span>सायं कपाट खुलना</span>
-                            <b class="font-mono text-mandir-red text-sm">04:30 PM</b>
+                <!-- Evening Aarti Card -->
+                <div class="bg-white rounded-3xl p-7 shadow-lg border-2 border-mandir-gold/30 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center gap-3 pb-4 mb-4 border-b border-gray-100">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl shadow-inner">
+                                <i class="fa-solid fa-moon"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-yatra text-xl text-mandir-maroon">सायंकालीन दर्शन (Evening)</h4>
+                                <p class="text-xs text-gray-500">कपाट खुलने का समय: 04:30 PM</p>
+                            </div>
                         </div>
-                        <div class="flex justify-between p-3 rounded-xl bg-mandir-red/10 border border-mandir-red font-bold text-mandir-red">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-bell animate-bounce"></i> संध्या महाआरती (मुख्य)</span>
-                            <b class="font-mono text-base">07:00 PM</b>
-                        </div>
-                        <div class="flex justify-between p-3 rounded-xl bg-mandir-cream">
-                            <span>शयन आरती व कपाट बंदी</span>
-                            <b class="font-mono text-mandir-red text-sm">09:15 PM</b>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-cream border border-mandir-gold/30">
+                                <div>
+                                    <span class="font-bold text-mandir-maroon text-sm block">सायं कपाट खुलना</span>
+                                    <span class="text-gray-500">भक्तों के दर्शनार्थ कपाट खुलते हैं</span>
+                                </div>
+                                <span class="font-bold font-mono text-mandir-red text-base">04:30 PM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-red/10 border-2 border-mandir-red font-bold text-mandir-red">
+                                <div>
+                                    <span class="text-sm block flex items-center gap-1.5"><i class="fa-solid fa-bell animate-bounce"></i> संध्या महाआरती (मुख्य)</span>
+                                    <span class="text-[10px] text-gray-600 font-normal">शंख, घंटा एवं दीप महाआरती</span>
+                                </div>
+                                <span class="font-bold font-mono text-base">07:00 PM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-mandir-cream border border-mandir-gold/30">
+                                <div>
+                                    <span class="font-bold text-mandir-maroon text-sm block">शयन आरती</span>
+                                    <span class="text-gray-500">रात्रि अंतिम स्तुति वंदना</span>
+                                </div>
+                                <span class="font-bold font-mono text-mandir-red text-base">09:15 PM</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-gray-50 text-gray-500 border border-gray-200">
+                                <div>
+                                    <span class="font-bold text-gray-700 text-sm block">रात्रि कपाट बंदी</span>
+                                    <span class="text-gray-500">मंदिर परिसर बंद होने का समय</span>
+                                </div>
+                                <span class="font-bold font-mono text-gray-600 text-base">09:30 PM</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+
+            <!-- Special Days Banner -->
+            <div class="bg-gradient-to-r from-mandir-maroon via-mandir-deepred to-mandir-crimson text-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-mandir-gold grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+                <div class="sm:border-r border-mandir-gold/30 sm:pr-4">
+                    <span class="text-[11px] font-bold text-amber-300 uppercase tracking-widest block mb-1">विशेष दिन</span>
+                    <h5 class="font-yatra text-lg text-white">शनिवार एवं मंगलवार</h5>
+                    <p class="text-xs text-yellow-100/80 mt-1">सिंदूर अर्पण, लाल चुनरी व नारियल बलि दर्शन हेतु भक्तों का विशेष जमावड़ा।</p>
+                </div>
+                <div class="sm:border-r border-mandir-gold/30 sm:pr-4">
+                    <span class="text-[11px] font-bold text-amber-300 uppercase tracking-widest block mb-1">मासिक अनुष्ठान</span>
+                    <h5 class="font-yatra text-lg text-white">मासिक अमावस्या निशि पूजा</h5>
+                    <p class="text-xs text-yellow-100/80 mt-1">प्रत्येक कृष्ण पक्ष अमावस्या की मध्यरात्रि तांत्रिक-वैदिक निशि पूजा व शांति हवन।</p>
+                </div>
+                <div>
+                    <span class="text-[11px] font-bold text-amber-300 uppercase tracking-widest block mb-1">वार्षिक महापर्व</span>
+                    <h5 class="font-yatra text-lg text-white">दीपावली काली पूजा महोत्सव</h5>
+                    <p class="text-xs text-yellow-100/80 mt-1">एक वर्ष पुरानी प्रतिमा का विसर्जन, नई प्रतिमा स्थापना व विशाल मेला।</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- 4. Interactive Online Donation Portal (Razorpay, Cashfree & UPI) -->
-    <section id="donate" class="py-16 bg-gradient-to-br from-mandir-maroon via-mandir-deepred to-mandir-crimson text-white relative">
+    <!-- SECTION 4: Interactive Online Donation Portal (Razorpay, Cashfree & UPI) -->
+    <section id="donate" class="py-16 sm:py-24 bg-gradient-to-br from-mandir-darkmaroon via-mandir-maroon to-mandir-deepred text-white relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
-                    पवित्र दान एवं पुण्य संकल्प
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-black/50 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/50 shadow-md">
+                    पवित्र दान एवं पुण्य संकल्प (Online Seva)
                 </span>
-                <h2 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+                <h2 class="font-yatra text-3xl sm:text-5xl text-amber-300 leading-tight">
                     ऑनलाइन दान सेवा (Razorpay, Cashfree & UPI QR)
                 </h2>
-                <p class="mt-2 text-xs sm:text-sm text-yellow-100/90 max-w-2xl mx-auto font-light">
-                    श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज (बिहार) - 855107। आपका प्रत्येक अंशदान मंदिर विकास, नित्य भोग एवं जनसेवा में समर्पित होता है।
+                <p class="text-xs sm:text-sm text-yellow-100/90 max-w-2xl mx-auto font-light leading-relaxed">
+                    श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज (बिहार) - 855107। आपका प्रत्येक अंशदान मंदिर विकास, नित्य भोग, अखंड ज्योति एवं जनसेवा में समर्पित होता है।
                 </p>
             </div>
 
-            <!-- Standalone Donation Card -->
-            <div class="bg-white text-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-mandir-gold grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Master Donation Container (Precision 2-Column Responsive Layout) -->
+            <div class="bg-white text-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-mandir-gold grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                <!-- Left 7 cols: Seva & Amount -->
+                <!-- Left 7 cols: Seva Category, Amount Chips & Gateways -->
                 <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- 1. Seva Purpose -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">
                             १. दान संकल्प / सेवा का उद्देश्य चुनें <span class="text-mandir-red">*</span>
                         </label>
-                        <select id="staticDonationPurpose" class="w-full p-3.5 rounded-xl border border-gray-300 focus:border-mandir-red text-sm font-medium bg-mandir-cream/30 text-gray-800">
+                        <select id="staticDonationPurpose" class="w-full p-3.5 rounded-2xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm font-medium bg-mandir-cream text-gray-800 shadow-sm">
                             <option value="नित्य भोग एवं महाप्रसाद सेवा (Nitya Bhog Seva)">नित्य भोग एवं महाप्रसाद सेवा (Nitya Bhog Seva)</option>
                             <option value="दीप दान एवं अखंड ज्योति सेवा (Deep Daan Seva)">दीप दान एवं अखंड ज्योति सेवा (Deep Daan Seva)</option>
                             <option value="मंदिर जीर्णोद्धार एवं निर्माण कोष (Temple Renovation)">मंदिर जीर्णोद्धार एवं निर्माण कोष (Temple Renovation)</option>
@@ -499,120 +670,156 @@
                         </select>
                     </div>
 
+                    <!-- 2. Amount Selection Chips -->
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-2">
-                            २. दान राशि का चयन करें (INR) <span class="text-mandir-red">*</span>
-                        </label>
-                        <div class="grid grid-cols-3 gap-2.5">
-                            <button type="button" onclick="setStaticAmount(251, this)" class="static-amt-btn p-3 rounded-xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹251</button>
-                            <button type="button" onclick="setStaticAmount(501, this)" class="static-amt-btn p-3 rounded-xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹501</button>
-                            <button type="button" onclick="setStaticAmount(1100, this)" class="static-amt-btn p-3 rounded-xl border-2 border-mandir-red bg-mandir-red text-white font-bold text-sm shadow">₹1,100</button>
-                            <button type="button" onclick="setStaticAmount(2100, this)" class="static-amt-btn p-3 rounded-xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹2,100</button>
-                            <button type="button" onclick="setStaticAmount(5100, this)" class="static-amt-btn p-3 rounded-xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹5,100</button>
-                            <button type="button" onclick="setStaticAmount(11000, this)" class="static-amt-btn p-3 rounded-xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹11,000</button>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-bold text-gray-700">
+                                २. दान राशि का चयन करें (INR) <span class="text-mandir-red">*</span>
+                            </label>
+                            <span class="text-[11px] text-mandir-red font-semibold">लोकप्रिय राशि चुनें</span>
                         </div>
-                        <div class="mt-3">
-                            <input type="number" id="staticCustomAmount" value="1100" min="11" oninput="onCustomAmountChange(this.value)" placeholder="अथवा इच्छित राशि दर्ज करें" class="w-full p-3 rounded-xl border border-gray-300 font-bold text-base text-gray-800">
+                        
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <button type="button" onclick="setStaticAmount(251, this)" class="static-amt-btn p-3 rounded-2xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹251</button>
+                            <button type="button" onclick="setStaticAmount(501, this)" class="static-amt-btn p-3 rounded-2xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹501</button>
+                            <button type="button" onclick="setStaticAmount(1100, this)" class="static-amt-btn p-3 rounded-2xl border-2 border-mandir-red bg-mandir-red text-white font-bold text-sm shadow">
+                                ₹1,100 <span class="text-[10px] block font-normal text-yellow-200">प्रशंसित</span>
+                            </button>
+                            <button type="button" onclick="setStaticAmount(2100, this)" class="static-amt-btn p-3 rounded-2xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹2,100</button>
+                            <button type="button" onclick="setStaticAmount(5100, this)" class="static-amt-btn p-3 rounded-2xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹5,100</button>
+                            <button type="button" onclick="setStaticAmount(11000, this)" class="static-amt-btn p-3 rounded-2xl border border-gray-300 font-bold text-sm hover:border-mandir-red transition">₹11,000</button>
+                        </div>
+                        
+                        <div class="mt-3 relative">
+                            <span class="absolute left-4 top-3 text-gray-500 font-bold text-base">₹</span>
+                            <input type="number" id="staticCustomAmount" value="1100" min="11" oninput="onCustomAmountChange(this.value)" placeholder="अथवा इच्छित राशि दर्ज करें" class="w-full pl-9 pr-4 py-2.5 rounded-2xl border border-gray-300 font-bold text-base text-gray-800 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20">
                         </div>
                     </div>
 
-                    <!-- Payment Gateways Radio Selection -->
+                    <!-- 3. Gateway Cards (Razorpay, Cashfree & Direct UPI QR) -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">
                             ३. भुगतान माध्यम (Payment Gateway) चुनें <span class="text-mandir-red">*</span>
                         </label>
+                        
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-3.5 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between">
+                            
+                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between bg-white shadow-sm">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-mandir-maroon">Razorpay PG</span>
+                                    <span class="font-bold text-mandir-maroon text-sm">Razorpay PG</span>
                                     <input type="radio" name="staticGateway" value="RAZORPAY" checked class="text-mandir-red focus:ring-mandir-red">
                                 </div>
-                                <span class="text-[10px] text-gray-500">कार्ड्स, UPI, नेटबैंकिंग</span>
-                                <span class="mt-2 text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold w-max">तत्काल पावती</span>
+                                <span class="text-[11px] text-gray-500">कार्ड्स, UPI, नेटबैंकिंग, प्रमुख वॉलेट्स</span>
+                                <span class="mt-3 text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold w-max">
+                                    तत्काल पावती
+                                </span>
                             </label>
 
-                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-3.5 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between">
+                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between bg-white shadow-sm">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-mandir-maroon">Cashfree PG</span>
+                                    <span class="font-bold text-mandir-maroon text-sm">Cashfree PG</span>
                                     <input type="radio" name="staticGateway" value="CASHFREE" class="text-mandir-red focus:ring-mandir-red">
                                 </div>
-                                <span class="text-[10px] text-gray-500">फास्ट चेकआउट, UPI</span>
-                                <span class="mt-2 text-[9px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-semibold w-max">कैशफ्री सुरक्षित</span>
+                                <span class="text-[11px] text-gray-500">फास्ट चेकआउट, पे-बाय-UPI</span>
+                                <span class="mt-3 text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold w-max">
+                                    कैशफ्री सुरक्षित
+                                </span>
                             </label>
 
-                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-3.5 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between">
+                            <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red transition flex flex-col justify-between bg-white shadow-sm">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-mandir-maroon">Direct UPI QR</span>
+                                    <span class="font-bold text-mandir-maroon text-sm">Direct UPI QR</span>
                                     <input type="radio" name="staticGateway" value="UPI_QR" class="text-mandir-red focus:ring-mandir-red">
                                 </div>
-                                <span class="text-[10px] text-gray-500">GPay, PhonePe, Paytm</span>
-                                <span class="mt-2 text-[9px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-semibold w-max">0% शुल्क</span>
+                                <span class="text-[11px] text-gray-500">PhonePe, GPay, Paytm से QR स्कैन</span>
+                                <span class="mt-3 text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold w-max">
+                                    0% शुल्क
+                                </span>
                             </label>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Right 5 cols: Donor Form & Action -->
-                <div class="lg:col-span-5 bg-mandir-cream/40 p-6 rounded-2xl border border-mandir-gold/40 flex flex-col justify-between space-y-4 text-xs">
+                <!-- Right 5 cols: Donor Form & Live Summary Card -->
+                <div class="lg:col-span-5 bg-mandir-cream/60 p-6 sm:p-7 rounded-3xl border border-mandir-gold/40 flex flex-col justify-between space-y-5 text-xs shadow-inner">
+                    
                     <div>
-                        <h4 class="font-yatra text-lg text-mandir-maroon pb-2 border-b border-mandir-gold/30 mb-3">दानदाता विवरण (Donor Details)</h4>
+                        <div class="flex items-center justify-between pb-3 border-b border-mandir-gold/30 mb-4">
+                            <h4 class="font-yatra text-xl text-mandir-maroon">दानदाता विवरण (Donor Info)</h4>
+                            <span class="text-[11px] text-mandir-saffron font-semibold">80G पावती</span>
+                        </div>
                         
-                        <div class="space-y-3">
+                        <div class="space-y-3.5">
                             <div>
-                                <label class="block font-bold text-gray-700 mb-1">दानदाता का नाम <span class="text-mandir-red">*</span></label>
-                                <input type="text" id="staticDonorName" placeholder="जैसे: अमित कुमार शर्मा" required class="w-full p-2.5 rounded-xl border border-gray-300 text-sm">
+                                <label class="block font-bold text-gray-700 mb-1">दानदाता का पूरा नाम <span class="text-mandir-red">*</span></label>
+                                <input type="text" id="staticDonorName" placeholder="जैसे: अमित कुमार शर्मा" required class="w-full p-3 rounded-2xl border border-gray-300 text-sm focus:border-mandir-red focus:ring-1 focus:ring-mandir-red">
                             </div>
 
                             <div>
-                                <label class="block font-bold text-gray-700 mb-1">मोबाइल नंबर <span class="text-mandir-red">*</span></label>
-                                <input type="tel" id="staticDonorPhone" placeholder="10 अंकों का मोबाइल नंबर" required class="w-full p-2.5 rounded-xl border border-gray-300 text-sm font-mono">
+                                <label class="block font-bold text-gray-700 mb-1">मोबाइल नंबर (10 अंक) <span class="text-mandir-red">*</span></label>
+                                <input type="tel" id="staticDonorPhone" placeholder="10 अंकों का मोबाइल नंबर" required class="w-full p-3 rounded-2xl border border-gray-300 text-sm font-mono focus:border-mandir-red focus:ring-1 focus:ring-mandir-red">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block font-bold text-gray-700 mb-1">गोत्र (Gotra)</label>
+                                    <input type="text" id="staticDonorGotra" placeholder="कश्यप / सर्वगोत्र" class="w-full p-2.5 rounded-2xl border border-gray-300 text-sm focus:border-mandir-red">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-gray-700 mb-1">पैन नंबर (वैकल्पिक)</label>
+                                    <input type="text" id="staticDonorPan" placeholder="ABCDE1234F" class="w-full p-2.5 rounded-2xl border border-gray-300 text-sm uppercase focus:border-mandir-red">
+                                </div>
                             </div>
 
                             <div>
-                                <label class="block font-bold text-gray-700 mb-1">गोत्र (Gotra - संकल्प हेतु)</label>
-                                <input type="text" id="staticDonorGotra" placeholder="जैसे: कश्यप, भारद्वाज" class="w-full p-2.5 rounded-xl border border-gray-300 text-sm">
-                            </div>
-
-                            <div>
-                                <label class="block font-bold text-gray-700 mb-1">नगर / पता (City/Address)</label>
-                                <input type="text" id="staticDonorAddress" placeholder="लाइन पाड़ा, किशनगंज" class="w-full p-2.5 rounded-xl border border-gray-300 text-sm">
+                                <label class="block font-bold text-gray-700 mb-1">शहर / पूर्ण पता (City & Address)</label>
+                                <input type="text" id="staticDonorAddress" placeholder="जैसे: लाइन पाड़ा, किशनगंज, बिहार" class="w-full p-3 rounded-2xl border border-gray-300 text-sm focus:border-mandir-red">
                             </div>
                         </div>
                     </div>
 
-                    <div class="pt-3 border-t border-mandir-gold/30">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-gray-600">कुल दान राशि:</span>
-                            <span id="staticDisplayAmount" class="font-bold text-2xl text-mandir-red font-mono">₹1,100</span>
+                    <!-- Summary & CTA Button -->
+                    <div class="pt-4 border-t border-mandir-gold/30 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 font-medium">कुल समर्पित दान राशि:</span>
+                            <span id="staticDisplayAmount" class="font-bold text-3xl text-mandir-red font-mono">₹1,100</span>
                         </div>
 
-                        <button type="button" onclick="handleStaticDonation()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-mandir-red via-mandir-crimson to-mandir-maroon text-white font-bold text-sm shadow-xl hover:scale-102 transition flex items-center justify-center gap-2 border border-mandir-gold">
-                            <i class="fa-solid fa-hands-praying text-yellow-300"></i>
+                        <button type="button" onclick="handleStaticDonation()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-mandir-red via-mandir-crimson to-mandir-maroon text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl hover:scale-102 active:scale-98 transition duration-300 flex items-center justify-center gap-2.5 border-2 border-mandir-gold">
+                            <i class="fa-solid fa-hands-praying text-yellow-300 text-lg"></i>
                             <span>दान समर्पित करें व रसीद पाएं</span>
                         </button>
+
+                        <div class="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                            <span><i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i> 256-Bit SSL सुरक्षित</span>
+                            <span class="text-mandir-maroon font-semibold">तत्काल डिजिटल पावती</span>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
+
         </div>
     </section>
 
-    <!-- 5. Online Puja & Sankalp Booking -->
-    <section id="puja" class="py-16 bg-white border-b border-gray-200">
+    <!-- SECTION 5: Online Puja & Sankalp Booking -->
+    <section id="puja" class="py-16 sm:py-20 bg-white border-b border-gray-200">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-mandir-gold">
-                <div class="text-center pb-6 border-b border-gray-100">
-                    <span class="w-12 h-12 rounded-full bg-mandir-red text-white flex items-center justify-center mx-auto text-xl mb-2 shadow">
+                <div class="text-center pb-6 border-b border-gray-100 space-y-2">
+                    <span class="w-12 h-12 rounded-2xl bg-mandir-red text-white flex items-center justify-center mx-auto text-xl shadow">
                         <i class="fa-solid fa-fire"></i>
                     </span>
-                    <h3 class="font-yatra text-2xl text-mandir-maroon">विशेष पूजा एवं भोग संकल्प पंजीयन</h3>
+                    <h3 class="font-yatra text-2xl sm:text-3xl text-mandir-maroon">विशेष पूजा एवं भोग संकल्प पंजीयन</h3>
                     <p class="text-xs text-gray-500">घर बैठे अपने नाम व गोत्र से मां बूढ़ी काली के चरणों में विशेष अनुष्ठान का संकल्प दर्ज करें</p>
                 </div>
 
                 <form onsubmit="event.preventDefault(); alert('आपका पूजा संकल्प सफलतापूर्वक दर्ज कर लिया गया है। मंदिर पुरोहित शीघ्र संपर्क करेंगे।'); this.reset();" class="py-6 space-y-4 text-xs">
                     <div>
-                        <label class="block font-bold text-gray-700 mb-1">पूजा का प्रकार चुनें</label>
-                        <select class="w-full p-3 rounded-xl border border-gray-300 text-sm font-medium bg-mandir-cream/30">
+                        <label class="block font-bold text-gray-700 mb-1">पूजा का प्रकार चुनें <span class="text-mandir-red">*</span></label>
+                        <select class="w-full p-3.5 rounded-2xl border border-gray-300 text-sm font-medium bg-mandir-cream/40">
                             <option>मासिक अमावस्या महापूजन एवं शांति हवन (₹2,100)</option>
                             <option>नित्य भोग एवं महाप्रसाद सेवा (₹1,100)</option>
                             <option>विशेष षोडशोपचार पूजन एवं चंडी पाठ (₹3,100)</option>
@@ -623,130 +830,192 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">श्रद्धालु का नाम</label>
-                            <input type="text" required placeholder="जैसे: राकेश कुमार" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                            <label class="block font-bold text-gray-700 mb-1">श्रद्धालु का नाम <span class="text-mandir-red">*</span></label>
+                            <input type="text" required placeholder="जैसे: राकेश कुमार" class="w-full p-3 rounded-2xl border border-gray-300 text-sm">
                         </div>
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">मोबाइल नंबर</label>
-                            <input type="tel" required placeholder="10 अंकों का मोबाइल नंबर" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                            <label class="block font-bold text-gray-700 mb-1">मोबाइल नंबर <span class="text-mandir-red">*</span></label>
+                            <input type="tel" required placeholder="10 अंकों का मोबाइल नंबर" class="w-full p-3 rounded-2xl border border-gray-300 text-sm font-mono">
                         </div>
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">गोत्र (Gotra)</label>
-                            <input type="text" required placeholder="जैसे: कश्यप, भारद्वाज" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                            <label class="block font-bold text-gray-700 mb-1">गोत्र (Gotra) <span class="text-mandir-red">*</span></label>
+                            <input type="text" required placeholder="जैसे: कश्यप, भारद्वाज" class="w-full p-3 rounded-2xl border border-gray-300 text-sm">
                         </div>
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">पूजा की तिथि</label>
-                            <input type="date" required class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                            <label class="block font-bold text-gray-700 mb-1">पूजा की तिथि <span class="text-mandir-red">*</span></label>
+                            <input type="date" required class="w-full p-3 rounded-2xl border border-gray-300 text-sm">
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-3.5 rounded-2xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-sm shadow-lg transition">
-                        संकल्प पंजीयन जमा करें (Submit Puja Request)
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-1">विशेष मनोकामना अथवा प्रार्थना नोट</label>
+                        <textarea rows="2" placeholder="पारिवारिक सुख-शांति, स्वास्थ्य अथवा विवाह बाधा निवारण हेतु..." class="w-full p-3 rounded-2xl border border-gray-300 text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-2xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-sm shadow-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-om text-yellow-300 text-base"></i>
+                        <span>संकल्प पंजीयन जमा करें (Submit Puja Request)</span>
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- 6. Gallery Section -->
-    <section id="gallery" class="py-16 bg-mandir-cream/50 border-b border-gray-200">
+    <!-- SECTION 6: Photo & Festival Gallery -->
+    <section id="gallery" class="py-16 sm:py-20 bg-mandir-cream/50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-            <div class="text-center max-w-2xl mx-auto">
-                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-3.5 py-1.5 rounded-full border border-mandir-gold/30">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-mandir-red font-bold text-xs tracking-widest uppercase bg-mandir-lightgold px-4 py-1.5 rounded-full border border-mandir-gold/40 inline-block">
                     पावन स्मृतियां एवं दर्शन
                 </span>
-                <h3 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon mt-3">
+                <h3 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon">
                     मंदिर चित्र एवं उत्सव दीर्घा
                 </h3>
+                <p class="text-xs sm:text-sm text-gray-600">लाइन पाड़ा के पावन दर्शन एवं वार्षिक उत्सवों की स्मृतियां</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/30 mandir-card-hover">
-                    <div class="h-48 bg-gradient-to-tr from-mandir-maroon via-mandir-red to-mandir-amber flex items-center justify-center text-center p-4 text-yellow-200">
+                
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/40 card-gold-border group">
+                    <div class="h-52 bg-gradient-to-tr from-mandir-maroon via-mandir-red to-mandir-amber flex items-center justify-center text-center p-4 text-yellow-200 relative">
                         <div>
-                            <i class="fa-solid fa-crown text-3xl mb-2 text-yellow-300"></i>
-                            <h4 class="font-yatra text-lg">मां बूढ़ी काली गर्भगृह दर्शन</h4>
-                            <p class="text-[11px] text-yellow-100/80">वर्ष भर विराजमान रहने वाली पावन प्रतिमा</p>
+                            <i class="fa-solid fa-crown text-4xl mb-2 text-yellow-300 drop-shadow"></i>
+                            <h4 class="font-yatra text-xl text-yellow-100">मां बूढ़ी काली गर्भगृह</h4>
+                            <p class="text-[11px] text-yellow-200/80 mt-1">वर्ष भर विराजमान रहने वाली पावन प्रतिमा</p>
                         </div>
+                        <span class="absolute top-3 left-3 bg-black/60 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-yellow-400/40">
+                            गर्भगृह
+                        </span>
+                    </div>
+                    <div class="p-4 text-xs text-gray-600">
+                        किशनगंज के लाइन पाड़ा में 120 वर्षों से निरंतर अखंड पूजित मां काली का पावन विग्रह।
                     </div>
                 </div>
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/30 mandir-card-hover">
-                    <div class="h-48 bg-gradient-to-tr from-indigo-950 via-purple-900 to-mandir-crimson flex items-center justify-center text-center p-4 text-yellow-200">
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/40 card-gold-border group">
+                    <div class="h-52 bg-gradient-to-tr from-indigo-950 via-purple-900 to-mandir-crimson flex items-center justify-center text-center p-4 text-yellow-200 relative">
                         <div>
-                            <i class="fa-solid fa-fire text-3xl mb-2 text-amber-300"></i>
-                            <h4 class="font-yatra text-lg">कार्तिक अमावस्या निशि पूजा</h4>
-                            <p class="text-[11px] text-yellow-100/80">मध्यरात्रि तांत्रिक एवं वैदिक महायज्ञ</p>
+                            <i class="fa-solid fa-fire text-4xl mb-2 text-amber-300 drop-shadow"></i>
+                            <h4 class="font-yatra text-xl text-yellow-100">कार्तिक अमावस्या निशि पूजा</h4>
+                            <p class="text-[11px] text-yellow-200/80 mt-1">मध्यरात्रि तांत्रिक एवं वैदिक महायज्ञ</p>
                         </div>
+                        <span class="absolute top-3 left-3 bg-black/60 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-yellow-400/40">
+                            वार्षिक उत्सव
+                        </span>
+                    </div>
+                    <div class="p-4 text-xs text-gray-600">
+                        दीपावली की निशा में होने वाला ऐतिहासिक पूजनोत्सव एवं महाप्रसाद वितरण।
                     </div>
                 </div>
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/30 mandir-card-hover">
-                    <div class="h-48 bg-gradient-to-tr from-amber-700 via-orange-600 to-yellow-600 flex items-center justify-center text-center p-4 text-white">
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-mandir-gold/40 card-gold-border group">
+                    <div class="h-52 bg-gradient-to-tr from-amber-700 via-orange-600 to-yellow-600 flex items-center justify-center text-center p-4 text-white relative">
                         <div>
-                            <i class="fa-solid fa-monument text-3xl mb-2 text-yellow-200"></i>
-                            <h4 class="font-yatra text-lg">प्रतिमा विसर्जन शोभायात्रा</h4>
-                            <p class="text-[11px] text-yellow-100/80">एक वर्ष उपरांत पवित्र नदी विसर्जन</p>
+                            <i class="fa-solid fa-monument text-4xl mb-2 text-yellow-200 drop-shadow"></i>
+                            <h4 class="font-yatra text-xl text-yellow-100">प्रतिमा विसर्जन शोभायात्रा</h4>
+                            <p class="text-[11px] text-yellow-100/80 mt-1">एक वर्ष उपरांत पवित्र नदी विसर्जन</p>
                         </div>
+                        <span class="absolute top-3 left-3 bg-black/60 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-yellow-400/40">
+                            शोभायात्रा
+                        </span>
+                    </div>
+                    <div class="p-4 text-xs text-gray-600">
+                        वार्षिक विसर्जन के उपरांत उसी रात नई प्रतिमा की प्राण-प्रतिष्ठा का दृश्य।
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 7. Contact & Map Section -->
-    <section id="contact" class="py-16 bg-white">
+    <!-- SECTION 7: Contact & Location Map -->
+    <section id="contact" class="py-16 sm:py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
                 <div class="lg:col-span-6 space-y-5 text-xs">
-                    <span class="text-mandir-red font-bold tracking-widest uppercase bg-mandir-lightgold px-3.5 py-1.5 rounded-full border border-mandir-gold/30">
+                    <span class="text-mandir-red font-bold tracking-widest uppercase bg-mandir-lightgold px-4 py-1.5 rounded-full border border-mandir-gold/40 inline-block">
                         मार्गदर्शिका एवं संपर्क
                     </span>
-                    <h3 class="font-yatra text-3xl text-mandir-maroon">मंदिर कार्यालय एवं स्थान</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        लाइन पाड़ा (गांधी चौक के समीप), नगर परिषद क्षेत्र, किशनगंज, बिहार - 855107
+                    <h3 class="font-yatra text-3xl sm:text-4xl text-mandir-maroon">
+                        किशनगंज मंदिर स्थान व संपर्क
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा (गांधी चौक के समीप), नगर परिषद क्षेत्र, किशनगंज, बिहार - 855107
                     </p>
 
                     <div class="space-y-3">
-                        <div class="p-3 bg-gray-50 rounded-xl border flex items-center gap-3">
-                            <i class="fa-solid fa-train text-mandir-red text-base"></i>
-                            <span>किशनगंज रेलवे स्टेशन (KNE) से मात्र 1.5 कि.मी.</span>
+                        <div class="p-3.5 bg-gray-50 rounded-2xl border flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-mandir-red text-white flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-train"></i>
+                            </span>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-sm">किशनगंज रेलवे स्टेशन (KNE)</h5>
+                                <p class="text-gray-500">मात्र 1.5 कि.मी. दूरी (ई-रिक्शा व ऑटो की सीधी सुविधा)</p>
+                            </div>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl border flex items-center gap-3">
-                            <i class="fa-solid fa-plane text-mandir-saffron text-base"></i>
-                            <span>निकटतम एयरपोर्ट: बागडोगरा (सिलीगुड़ी) - 70 कि.मी.</span>
+
+                        <div class="p-3.5 bg-gray-50 rounded-2xl border flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-mandir-saffron text-white flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-plane"></i>
+                            </span>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-sm">बागडोगरा एयरपोर्ट (सिलीगुड़ी)</h5>
+                                <p class="text-gray-500">लगभग 70 कि.मी. दूरी (सीधी टैक्सी व बस सेवा उपलब्ध)</p>
+                            </div>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl border flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-mandir-amber text-base"></i>
-                            <span>हेल्पलाइन: +91 6456 222108 / +91 94312 85510</span>
+
+                        <div class="p-3.5 bg-gray-50 rounded-2xl border flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-mandir-amber text-white flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-sm">कार्यालय हेल्पलाइन</h5>
+                                <p class="text-gray-500">+91 6456 222108 / +91 94312 85510</p>
+                            </div>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl border flex items-center gap-3">
-                            <i class="fa-solid fa-qrcode text-mandir-crimson text-base"></i>
-                            <span>आधिकारिक UPI: <b class="font-mono text-gray-800">burhikalimandir@upi</b></span>
+
+                        <div class="p-3.5 bg-gray-50 rounded-2xl border flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-mandir-crimson text-yellow-300 flex items-center justify-center text-base shrink-0">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </span>
+                            <div>
+                                <h5 class="font-bold text-gray-800 text-sm">आधिकारिक UPI VPA</h5>
+                                <p class="font-mono text-gray-800 font-bold select-all">burhikalimandir@upi</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-6">
-                    <div class="rounded-3xl overflow-hidden border-2 border-mandir-gold shadow-lg h-72">
+                    <div class="rounded-3xl overflow-hidden border-4 border-mandir-gold shadow-2xl h-80 relative">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14374.805829630712!2d87.9400824!3d26.0963773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e516ecad9dfc4b%3A0xe677598cf423c8e4!2sKishanganj%2C%20Bihar%20855107!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                             class="w-full h-full border-0" allowfullscreen="" loading="lazy">
                         </iframe>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-b from-mandir-maroon to-black text-mandir-lightgold pt-12 pb-8 border-t-4 border-mandir-gold">
+    <!-- Divine Footer -->
+    <footer class="bg-gradient-to-b from-mandir-maroon to-black text-mandir-lightgold pt-14 pb-8 border-t-4 border-mandir-gold">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 text-xs">
-            <p class="font-yatra text-2xl text-yellow-300">श्री श्री १०८ बूढ़ी काली मंदिर</p>
-            <p class="text-mandir-lightgold/80">लाइन पाड़ा, किशनगंज (बिहार) - 855107 | ऐतिहासिक स्थापना वर्ष 1902</p>
-            <p class="text-mandir-lightgold/60 max-w-xl mx-auto">
-                नवाब असद रजा द्वारा भूमि समर्पण से पोषित गंगा-जमुनी संस्कृति और वार्षिक प्रतिमा दान की पावन परंपरा।
+            <p class="font-yatra text-2xl sm:text-3xl text-yellow-300">श्री श्री १०८ बूढ़ी काली मंदिर</p>
+            <p class="font-serif_spiritual text-sm text-yellow-100 font-semibold">Shree Shree 108 Budhi Kali Mandir (Burhi Kali), Line Para, Kishanganj (Bihar) - 855107</p>
+            <p class="text-mandir-lightgold/80 max-w-2xl mx-auto text-xs leading-relaxed">
+                नवाब असद रजा द्वारा भूमि समर्पण से पोषित गंगा-जमुनी संस्कृति, वार्षिक प्रतिमा दान की पावन परंपरा एवं मनोकामना सिद्ध पीठ।
             </p>
-            <div class="pt-4 border-t border-mandir-gold/20 flex flex-col sm:flex-row justify-between items-center gap-2 text-mandir-lightgold/50 text-[11px]">
-                <p>© 2026 श्री श्री १०८ बूढ़ी काली मंदिर प्रबंधन न्यास समिति। सर्वाधिकार सुरक्षित।</p>
+            
+            <div class="py-4 border-y border-mandir-gold/20 text-yellow-300/80 font-devanagari italic text-xs">
+                सर्वमंगल मांगल्ये शिवे सर्वार्थ साधिके। शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते॥
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row justify-between items-center gap-2 text-mandir-lightgold/60 text-[11px]">
+                <p>© 2026 श्री श्री १०८ बूढ़ी काली मंदिर प्रबंधन न्यास समिति, लाइन पाड़ा, किशनगंज (बिहार)।</p>
                 <p>Razorpay & Cashfree Payments Secured | Python Backend Ready</p>
             </div>
         </div>
@@ -764,30 +1033,30 @@
                 <div class="text-center pb-4 border-b-2 border-mandir-gold/40">
                     <p class="text-[10px] font-bold text-mandir-amber uppercase">॥ ॐ क्रीं कालिकायै नमः ॥</p>
                     <h3 class="font-yatra text-2xl text-mandir-maroon">श्री श्री १०८ बूढ़ी काली मंदिर</h3>
-                    <p class="font-serif_spiritual text-xs font-bold text-gray-700">SHREE SHREE 108 BURI KALI MANDIR TRUST</p>
+                    <p class="font-serif_spiritual text-xs font-bold text-gray-700">SHREE SHREE 108 BUDHI KALI MANDIR TRUST</p>
                     <p class="text-[11px] text-gray-500">लाइन पाड़ा, किशनगंज, बिहार - 855107 | पंजीयन सं: BR-KSG-BKM/1902</p>
-                    <span class="mt-2 inline-block bg-mandir-lightgold text-mandir-maroon font-bold text-[11px] px-3 py-1 rounded-full border border-mandir-gold">
+                    <span class="mt-2 inline-block bg-mandir-lightgold text-mandir-maroon font-bold text-[11px] px-3.5 py-1 rounded-full border border-mandir-gold">
                         दान एवं सहयोग पावती (OFFICIAL DONATION RECEIPT)
                     </span>
                 </div>
 
-                <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 grid grid-cols-2 gap-2 text-[11px]">
+                <div class="p-3 rounded-2xl bg-amber-50 border border-amber-200 grid grid-cols-2 gap-2 text-[11px]">
                     <div><span class="text-gray-500">रसीद सं:</span> <b id="rcpNumber" class="text-mandir-red font-mono"></b></div>
                     <div><span class="text-gray-500">दिनांक:</span> <b id="rcpDate" class="text-gray-800 font-mono"></b></div>
                     <div><span class="text-gray-500">माध्यम:</span> <b id="rcpGateway" class="text-gray-800"></b></div>
-                    <div><span class="text-gray-500">स्थिति:</span> <b class="text-emerald-700">COMPLETED</b></div>
+                    <div><span class="text-gray-500">स्थिति:</span> <b class="text-emerald-700 font-bold">COMPLETED</b></div>
                 </div>
 
                 <table class="w-full border-collapse text-xs">
                     <tbody>
-                        <tr class="border-b"><td class="py-2 text-gray-500">दानदाता:</td><td class="py-2 font-bold text-gray-800" id="rcpDonor"></td></tr>
+                        <tr class="border-b"><td class="py-2 text-gray-500 w-1/3">दानदाता:</td><td class="py-2 font-bold text-gray-800" id="rcpDonor"></td></tr>
                         <tr class="border-b"><td class="py-2 text-gray-500">मोबाइल:</td><td class="py-2 font-mono" id="rcpPhone"></td></tr>
                         <tr class="border-b"><td class="py-2 text-gray-500">गोत्र:</td><td class="py-2" id="rcpGotra"></td></tr>
                         <tr class="border-b"><td class="py-2 text-gray-500">प्रयोजन:</td><td class="py-2 font-bold text-mandir-maroon" id="rcpPurpose"></td></tr>
                     </tbody>
                 </table>
 
-                <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 flex justify-between items-center">
+                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 flex justify-between items-center">
                     <div>
                         <span class="text-[10px] text-emerald-800 font-bold block">समर्पित दान राशि:</span>
                         <span id="rcpAmount" class="text-2xl font-black text-mandir-maroon font-mono"></span>
@@ -804,17 +1073,17 @@
 
             <!-- Modal Action Buttons -->
             <div class="flex gap-3 pt-3 border-t no-print">
-                <button onclick="window.print()" class="flex-1 py-2.5 rounded-xl bg-white border border-gray-300 font-bold text-xs text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-print"></i> प्रिंट करें (Print)
+                <button onclick="window.print()" class="flex-1 py-3 rounded-2xl bg-white border border-gray-300 font-bold text-xs text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-print"></i> रसीद प्रिंट करें (Print)
                 </button>
-                <button onclick="closeReceiptModal()" class="flex-1 py-2.5 rounded-xl bg-mandir-red text-white font-bold text-xs hover:bg-mandir-crimson shadow">
+                <button onclick="closeReceiptModal()" class="flex-1 py-3 rounded-2xl bg-mandir-red text-white font-bold text-xs hover:bg-mandir-crimson shadow">
                     पूर्ण हुआ (Done)
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Client Script for Standalone GitHub Template Preview -->
+    <!-- Client Script for Standalone GitHub Template Preview & Ambient Sound -->
     <script>
         let currentStaticAmount = 1100;
 
@@ -870,10 +1139,30 @@
             document.getElementById('receiptModal').classList.add('hidden');
         }
 
-        function openReceiptSearchModal() {
-            const query = prompt('कृपया अपनी दान रसीद संख्या (जैसे BKM-2026-XXXX) अथवा मोबाइल नंबर दर्ज करें:');
-            if (query) {
-                alert(`खोज जारी: "${query}" से संबंधित रसीद सर्वर पर सुरक्षित है। उत्पादन सर्वर पर /verify-receipt एंडपॉइंट द्वारा यह सीधे प्राप्त होगी।`);
+        // Web Audio API Synthesizer for Holy Temple Bell Sound
+        function playTempleBell() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 holy bell pitch
+                osc.frequency.exponentialRampToValueAtTime(293.66, ctx.currentTime + 1.8);
+
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.0);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 2.0);
+            } catch(e) {
+                console.log("Audio play error", e);
             }
         }
 
