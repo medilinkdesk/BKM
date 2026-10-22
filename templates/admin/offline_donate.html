@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}काउंटर दान रसीद बनाएं | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-6">
+
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="{{ url_for('admin_dashboard') }}" class="p-2 rounded-xl bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div>
+                    <h1 class="font-yatra text-2xl text-mandir-maroon">काउंटर नकद / चेक दान रसीद जनरेटर</h1>
+                    <p class="text-xs text-gray-500">मंदिर कार्यालय में प्रत्यक्ष आने वाले श्रद्धालुओं हेतु</p>
+                </div>
+            </div>
+            <a href="{{ url_for('admin_dashboard') }}" class="text-xs font-semibold text-mandir-red hover:underline">
+                डैशबोर्ड
+            </a>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200">
+            <form action="{{ url_for('admin_offline_donation') }}" method="POST" class="space-y-4 text-xs">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="donor_name" class="block font-bold text-gray-700 mb-1">
+                            दानदाता का नाम <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="text" id="donor_name" name="donor_name" required placeholder="जैसे: विजय कुमार झा" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block font-bold text-gray-700 mb-1">
+                            मोबाइल नंबर <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="10 अंकों का मोबाइल नंबर" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="amount" class="block font-bold text-gray-700 mb-1">
+                            दान राशि (INR) <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="number" id="amount" name="amount" required min="1" step="1" value="501" class="w-full p-3 rounded-xl border border-gray-300 font-bold text-base text-mandir-maroon font-mono">
+                    </div>
+
+                    <div>
+                        <label for="payment_mode" class="block font-bold text-gray-700 mb-1">भुगतान प्रकार</label>
+                        <select id="payment_mode" name="payment_mode" class="w-full p-3 rounded-xl border border-gray-300 text-sm font-semibold">
+                            <option value="CASH">नकद (Cash)</option>
+                            <option value="CHEQUE">चेक (Cheque / DD)</option>
+                            <option value="POS_SWIPE">काउंटर कार्ड स्वाइप</option>
+                            <option value="DIRECT_TRANSFER">बैंक NEFT / RTGS</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="purpose" class="block font-bold text-gray-700 mb-1">दान का प्रयोजन</label>
+                        <select id="purpose" name="purpose" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                            <option value="नित्य भोग एवं महाप्रसाद सेवा">नित्य भोग एवं महाप्रसाद सेवा</option>
+                            <option value="मंदिर जीर्णोद्धार एवं निर्माण कोष">मंदिर जीर्णोद्धार एवं निर्माण कोष</option>
+                            <option value="दीप दान एवं अखंड ज्योति सेवा">दीप दान एवं अखंड ज्योति सेवा</option>
+                            <option value="अमावस्या महापूजन संकल्प">अमावस्या महापूजन संकल्प</option>
+                            <option value="वार्षिक काली पूजा महोत्सव सहयोग">वार्षिक काली पूजा महोत्सव सहयोग</option>
+                            <option value="सामान्य कल्याण दान">सामान्य कल्याण दान</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="gotra" class="block font-bold text-gray-700 mb-1">गोत्र (Gotra)</label>
+                        <input type="text" id="gotra" name="gotra" placeholder="जैसे: शांडिल्य, कश्यप" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block font-bold text-gray-700 mb-1">ईमेल (वैकल्पिक)</label>
+                        <input type="email" id="email" name="email" placeholder="ईमेल आईडी" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="pan" class="block font-bold text-gray-700 mb-1">पैन नंबर (80G रसीद हेतु)</label>
+                        <input type="text" id="pan" name="pan" placeholder="ABCDE1234F" class="w-full p-3 rounded-xl border border-gray-300 text-sm uppercase">
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="address" class="block font-bold text-gray-700 mb-1">पता / नगर</label>
+                        <input type="text" id="address" name="address" placeholder="लाइन पाड़ा, किशनगंज, बिहार" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="ref_no" class="block font-bold text-gray-700 mb-1">चेक सं. / रसीद बुक वाउचर सं. (यदि हो)</label>
+                        <input type="text" id="ref_no" name="ref_no" placeholder="काउंटर वाउचर संदर्भ" class="w-full p-3 rounded-xl border border-gray-300 text-sm font-mono">
+                    </div>
+                </div>
+
+                <div class="pt-4 text-right">
+                    <button type="submit" class="px-8 py-3.5 rounded-2xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-sm shadow-xl transition flex items-center justify-center gap-2 ml-auto">
+                        <i class="fa-solid fa-receipt text-yellow-300"></i>
+                        <span>रसीद जनरेट करें व प्रिंट करें (Generate & Print Receipt)</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

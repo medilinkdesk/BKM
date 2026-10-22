@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}संपर्क एवं मंदिर मार्गदर्शिका | श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="mandir-gradient-hero text-white py-12 border-b-4 border-mandir-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 mandir-bg-pattern pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
+            मार्गदर्शिका एवं संपर्क
+        </span>
+        <h1 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+            मंदिर कार्यालय, संपर्क सूत्र एवं स्थान
+        </h1>
+        <p class="mt-2 text-xs sm:text-sm text-yellow-100/90 max-w-xl mx-auto font-light">
+            श्री श्री १०८ बूढ़ी काली मंदिर प्रबंधन न्यास समिति, लाइन पाड़ा, किशनगंज (बिहार) - 855107
+        </p>
+    </div>
+</section>
+
+<section class="py-14 bg-mandir-cream/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            
+            <!-- Left 6 cols: Contact Details -->
+            <div class="lg:col-span-6 space-y-6">
+                
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-mandir-gold/30 space-y-6">
+                    <h2 class="font-yatra text-2xl text-mandir-maroon pb-3 border-b border-gray-100">
+                        मंदिर न्यास कार्यालय
+                    </h2>
+
+                    <div class="space-y-4 text-xs">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mandir-red text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">स्थान व पता (Address)</h4>
+                                <p class="text-gray-600 mt-0.5">लाइन पाड़ा (गांधी चौक के निकट), नगर परिषद क्षेत्र, किशनगंज, बिहार - 855107</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mandir-saffron text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">कार्यालय संपर्क (Helpline)</h4>
+                                <p class="text-gray-600 mt-0.5">{{ temple_phone }}</p>
+                                <p class="text-gray-400 text-[11px]">प्रातः 06:00 बजे से रात्रि 09:30 बजे तक</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mandir-amber text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">ईमेल (Email)</h4>
+                                <p class="text-gray-600 mt-0.5">{{ temple_email }}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mandir-crimson text-yellow-300 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">आधिकारिक UPI पता</h4>
+                                <p class="font-mono text-gray-800 font-bold select-all">{{ temple_upi_id }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distance Card -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg border border-mandir-gold/30">
+                    <h3 class="font-yatra text-lg text-mandir-maroon mb-3 pb-2 border-b border-gray-100">
+                        प्रमुख स्थानों से दूरी (Connectivity)
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                            <span class="text-gray-500 block">किशनगंज रेलवे स्टेशन (KNE)</span>
+                            <b class="text-mandir-red font-mono text-sm">1.5 कि.मी.</b>
+                        </div>
+                        <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                            <span class="text-gray-500 block">किशनगंज बस स्टैंड</span>
+                            <b class="text-mandir-red font-mono text-sm">1.0 कि.मी.</b>
+                        </div>
+                        <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                            <span class="text-gray-500 block">गांधी चौक / मुख्य बाजार</span>
+                            <b class="text-mandir-red font-mono text-sm">0.5 कि.मी.</b>
+                        </div>
+                        <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                            <span class="text-gray-500 block">बागडोगरा हवाई अड्डा (सिलीगुड़ी)</span>
+                            <b class="text-mandir-red font-mono text-sm">70 कि.मी.</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right 6 cols: Google Map & Query Form -->
+            <div class="lg:col-span-6 space-y-6">
+                
+                <!-- Map Card -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-mandir-gold">
+                    <h3 class="font-yatra text-lg text-mandir-maroon mb-3">गूगल मैप स्थान (Google Map)</h3>
+                    <div class="rounded-2xl overflow-hidden border border-gray-200 h-64 bg-gray-100">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14374.805829630712!2d87.9400824!3d26.0963773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e516ecad9dfc4b%3A0xe677598cf423c8e4!2sKishanganj%2C%20Bihar%20855107!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            class="w-full h-full border-0" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="mt-3 text-right">
+                        <a href="https://maps.google.com/?q=Line+Para+Kishanganj+Bihar" target="_blank" class="text-xs font-bold text-mandir-red hover:underline">
+                            गूगल मैप्स में दिशानिर्देश पाएं <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Query / Message Box -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-mandir-gold/30">
+                    <h3 class="font-yatra text-lg text-mandir-maroon mb-2">मंदिर कार्यालय को संदेश भेजें</h3>
+                    <p class="text-xs text-gray-500 mb-4">पूजा, दान, दर्शन अथवा प्रतिमा पंजीयन से जुड़े प्रश्नों हेतु संदेश लिखें:</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('आपका संदेश मंदिर कार्यालय को प्रेषित हो गया है। सेवादर शीघ्र संपर्क करेंगे।'); this.reset();" class="space-y-3 text-xs">
+                        <div>
+                            <input type="text" required placeholder="आपका नाम" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                        </div>
+                        <div>
+                            <input type="tel" required placeholder="मोबाइल नंबर" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                        </div>
+                        <div>
+                            <textarea rows="3" required placeholder="आपका संदेश अथवा जिज्ञासा..." class="w-full p-3 rounded-xl border border-gray-300 text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-xs shadow-md transition">
+                            संदेश प्रेषित करें (Send Message)
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

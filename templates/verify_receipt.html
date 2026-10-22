@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}दान रसीद खोजें व सत्यापन | श्री श्री १०८ बूढ़ी काली मंदिर लाइन पाड़ा, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="mandir-gradient-hero text-white py-12 border-b-4 border-mandir-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 mandir-bg-pattern pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
+            आधिकारिक पावती सत्यापन
+        </span>
+        <h1 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+            दान रसीद खोजें एवं PDF डाउनलोड करें
+        </h1>
+        <p class="mt-2 text-xs sm:text-sm text-yellow-100/90 max-w-xl mx-auto font-light">
+            अपनी दान रसीद संख्या (Receipt No) अथवा पंजीकृत मोबाइल नंबर दर्ज कर कभी भी अपनी आधिकारिक रसीद पुनः प्राप्त करें।
+        </p>
+    </div>
+</section>
+
+<section class="py-14 bg-mandir-cream/50 min-h-[50vh]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        
+        <!-- Search Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-mandir-gold">
+            <form action="{{ url_for('verify_receipt') }}" method="POST" class="space-y-4">
+                <label for="search_query" class="block font-bold text-sm text-mandir-maroon">
+                    रसीद संख्या अथवा 10 अंकों का मोबाइल नंबर दर्ज करें:
+                </label>
+                
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-grow">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-400"></i>
+                        <input type="text" id="search_query" name="search_query" value="{{ query }}" required placeholder="उदा: BKM-2024-10801 अथवा 9835012345" class="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 font-medium text-sm">
+                    </div>
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2 shrink-0">
+                        <i class="fa-solid fa-search"></i>
+                        <span>रसीद खोजें (Search)</span>
+                    </button>
+                </div>
+                <p class="text-[11px] text-gray-500">
+                    * यदि आपको रसीद संख्या याद नहीं है, तो दान करते समय दिया गया अपना 10 अंकों का मोबाइल नंबर दर्ज करें।
+                </p>
+            </form>
+        </div>
+
+        <!-- Search Results -->
+        {% if searched %}
+        <div class="mt-8 space-y-4">
+            <h3 class="font-yatra text-xl text-mandir-maroon">खोज परिणाम (Search Results)</h3>
+
+            {% if results %}
+                {% for r in results %}
+                <div class="bg-white rounded-2xl p-5 shadow-md border border-mandir-gold/30 hover:border-mandir-red transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="space-y-1 text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-mandir-red font-mono text-sm">{{ r.receipt_no }}</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold {% if r.status == 'COMPLETED' %}bg-emerald-100 text-emerald-800{% else %}bg-amber-100 text-amber-800{% endif %}">
+                                {{ r.status }}
+                            </span>
+                        </div>
+                        <p class="font-semibold text-gray-800 text-sm">{{ r.donor_name }}</p>
+                        <p class="text-gray-500">{{ r.purpose }} | <span class="text-gray-400 font-mono">{{ r.created_at }}</span></p>
+                        <p class="text-mandir-maroon font-bold font-mono text-base pt-1">₹{{ "{:,.2f}".format(r.amount) }}</p>
+                    </div>
+
+                    <div class="flex items-center gap-2 shrink-0">
+                        <a href="{{ url_for('view_receipt', receipt_no=r.receipt_no) }}" class="px-3.5 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 font-semibold text-xs text-gray-700 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-eye text-mandir-maroon"></i> देखें (View)
+                        </a>
+                        <a href="{{ url_for('download_receipt_pdf', receipt_no=r.receipt_no) }}" class="px-3.5 py-2 rounded-xl bg-mandir-red hover:bg-mandir-crimson font-semibold text-xs text-white transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pdf"></i> PDF डाउनलोड
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="p-8 bg-white rounded-2xl border border-gray-200 text-center text-gray-500 text-xs">
+                    <i class="fa-solid fa-file-circle-xmark text-3xl text-gray-300 mb-2 block"></i>
+                    <p class="font-bold text-sm text-gray-700">कोई रसीद नहीं मिली।</p>
+                    <p class="mt-1">कृपया रसीद संख्या अथवा मोबाइल नंबर की शुद्धता जांचें, अथवा मंदिर कार्यालय से संपर्क करें।</p>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

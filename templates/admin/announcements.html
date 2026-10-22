@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}सूचना पट्ट प्रबंधन | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="{{ url_for('admin_dashboard') }}" class="p-2 rounded-xl bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div>
+                    <h1 class="font-yatra text-2xl text-mandir-maroon">मंदिर सूचना पट्ट प्रबंधन</h1>
+                    <p class="text-xs text-gray-500">होमपेज पर प्रसारित होने वाली ताजा सूचनाएं एवं पर्व तिथियां</p>
+                </div>
+            </div>
+            <a href="{{ url_for('admin_dashboard') }}" class="text-xs font-semibold text-mandir-red hover:underline">
+                डैशबोर्ड
+            </a>
+        </div>
+
+        <!-- Add New Announcement Form -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-200">
+            <h2 class="font-yatra text-lg text-mandir-maroon mb-4 pb-2 border-b border-gray-100">
+                नई सूचना जारी करें (Publish New Notice)
+            </h2>
+
+            <form action="{{ url_for('admin_announcements') }}" method="POST" class="space-y-4 text-xs">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="title" class="block font-bold text-gray-700 mb-1">सूचना शीर्षक (Title)</label>
+                        <input type="text" id="title" name="title" required placeholder="जैसे: आगामी मासिक अमावस्या महापूजन" class="w-full p-3 rounded-xl border border-gray-300 text-sm font-medium">
+                    </div>
+                    <div>
+                        <label for="date_str" class="block font-bold text-gray-700 mb-1">तिथि अथवा पर्व (Date / Occasion)</label>
+                        <input type="text" id="date_str" name="date_str" required placeholder="जैसे: 25 अक्टूबर अथवा प्रत्येक मंगलवार" class="w-full p-3 rounded-xl border border-gray-300 text-sm font-medium">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="content" class="block font-bold text-gray-700 mb-1">सूचना का पूर्ण विवरण (Notice Content)</label>
+                    <textarea id="content" name="content" rows="3" required placeholder="श्रद्धालुओं के सूचनार्थ संदेश..." class="w-full p-3 rounded-xl border border-gray-300 text-sm"></textarea>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-xs shadow-md transition flex items-center gap-1.5 ml-auto">
+                        <i class="fa-solid fa-plus"></i> सूचना प्रकाशित करें
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Existing Announcements List -->
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-200 space-y-4">
+            <h2 class="font-yatra text-lg text-mandir-maroon pb-2 border-b border-gray-100">
+                सक्रिय सूचनाएं (Active Notices)
+            </h2>
+
+            <div class="space-y-3">
+                {% for a in announcements %}
+                <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200 flex items-start justify-between gap-4">
+                    <div class="space-y-1 text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-mandir-maroon text-sm">{{ a.title }}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200 text-amber-900 font-mono">{{ a.date_str }}</span>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">{{ a.content }}</p>
+                    </div>
+
+                    <a href="{{ url_for('admin_delete_announcement', announcement_id=a.id) }}" onclick="return confirm('क्या आप इस सूचना को हटाना चाहते हैं?')" class="p-2 rounded-lg bg-rose-100 text-rose-700 hover:bg-rose-200 transition shrink-0" title="हटाएं">
+                        <i class="fa-solid fa-trash text-xs"></i>
+                    </a>
+                </div>
+                {% else %}
+                <p class="text-xs text-gray-400 py-4 text-center">कोई सूचना उपलब्ध नहीं है।</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+
+{% block title %}व्यवस्थापक डैशबोर्ड | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+        <!-- Admin Top Navigation Bar -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-200 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-mandir-maroon text-yellow-300 flex items-center justify-center font-bold text-lg">
+                    ॐ
+                </div>
+                <div>
+                    <h1 class="font-yatra text-xl text-mandir-maroon">समिति प्रशासनिक पोर्टल (Admin Portal)</h1>
+                    <p class="text-xs text-gray-500">लाइन पाड़ा, किशनगंज (बिहार) - 855107</p>
+                </div>
+            </div>
+
+            <!-- Admin Actions -->
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+                <a href="{{ url_for('admin_offline_donation') }}" class="px-3.5 py-2 rounded-xl bg-mandir-red text-white font-bold hover:bg-mandir-crimson transition shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus-circle"></i> काउंटर दान रसीद बनाएं
+                </a>
+                <a href="{{ url_for('admin_settings') }}" class="px-3.5 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-sliders text-mandir-red"></i> गेटवे सेटिंग्स (Razorpay/CF)
+                </a>
+                <a href="{{ url_for('admin_announcements') }}" class="px-3.5 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bullhorn text-mandir-amber"></i> सूचनाएं
+                </a>
+                <a href="{{ url_for('export_donations_csv') }}" class="px-3.5 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-excel"></i> Excel / CSV निर्यात
+                </a>
+                <a href="{{ url_for('admin_logout') }}" class="px-3.5 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-semibold hover:bg-rose-100 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-right-from-bracket"></i> लॉगआउट
+                </a>
+            </div>
+        </div>
+
+        <!-- Mode Alert -->
+        {% if settings.get('payment_mode') == 'TEST' %}
+        <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs flex items-center justify-between">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
+                <b>गेटवे मोड: TEST / SIMULATION सक्रिय है।</b> लाइव भुगतान प्राप्त करने हेतु 'गेटवे सेटिंग्स' में जाकर Razorpay / Cashfree की लाइव कुंजियां दर्ज कर LIVE मोड चुनें।
+            </span>
+            <a href="{{ url_for('admin_settings') }}" class="font-bold underline text-mandir-maroon">सेटिंग्स बदलें</a>
+        </div>
+        {% endif %}
+
+        <!-- Analytics Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider block">कुल स्वीकृत दान राशि</span>
+                <span class="text-2xl font-extrabold text-mandir-red font-mono mt-1 block">₹{{ "{:,.2f}".format(stats.total_amount) }}</span>
+                <span class="text-[11px] text-gray-400 mt-2 block">कुल दानदाता: <b class="text-gray-700 font-mono">{{ stats.total_count }}</b></span>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider block">आज का दान संग्रह</span>
+                <span class="text-2xl font-extrabold text-emerald-700 font-mono mt-1 block">₹{{ "{:,.2f}".format(stats.today_amount) }}</span>
+                <span class="text-[11px] text-gray-400 mt-2 block">आज के दान: <b class="text-gray-700 font-mono">{{ stats.today_count }}</b></span>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider block">गेटवे विभाजन (Gateways)</span>
+                <div class="mt-2 space-y-1 text-xs">
+                    {% for g in stats.gateways %}
+                    <div class="flex justify-between text-gray-600">
+                        <span>{{ g.gateway }}:</span>
+                        <b class="font-mono text-gray-800">₹{{ "{:,.0f}".format(g.amount) }} ({{ g.count }})</b>
+                    </div>
+                    {% else %}
+                    <p class="text-gray-400 text-[11px]">कोई लेनदेन नहीं</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider block">सक्रिय गेटवे स्थिति</span>
+                <div class="mt-2 text-xs space-y-1.5">
+                    <p class="flex items-center justify-between">
+                        <span class="text-gray-600">Razorpay:</span>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">सक्रिय</span>
+                    </p>
+                    <p class="flex items-center justify-between">
+                        <span class="text-gray-600">Cashfree:</span>
+                        <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">सक्रिय</span>
+                    </p>
+                    <p class="flex items-center justify-between">
+                        <span class="text-gray-600">Direct UPI:</span>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">QR सक्रिय</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200">
+            <form action="{{ url_for('admin_dashboard') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs">
+                
+                <div class="sm:col-span-5 relative">
+                    <i class="fa-solid fa-search absolute left-3.5 top-3 text-gray-400"></i>
+                    <input type="text" name="search" value="{{ search }}" placeholder="रसीद सं., दानदाता का नाम, मोबाइल नंबर या लेनदेन ID..." class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-gray-300 font-medium">
+                </div>
+
+                <div class="sm:col-span-3">
+                    <select name="gateway" class="w-full py-2.5 px-3 rounded-xl border border-gray-300 font-medium">
+                        <option value="">सभी माध्यम (All Gateways)</option>
+                        <option value="RAZORPAY" {% if gateway == 'RAZORPAY' %}selected{% endif %}>Razorpay</option>
+                        <option value="CASHFREE" {% if gateway == 'CASHFREE' %}selected{% endif %}>Cashfree</option>
+                        <option value="UPI_QR" {% if gateway == 'UPI_QR' %}selected{% endif %}>Direct UPI QR</option>
+                        <option value="OFFLINE_CASH" {% if gateway == 'OFFLINE_CASH' %}selected{% endif %}>काउंटर नकद (Cash)</option>
+                    </select>
+                </div>
+
+                <div class="sm:col-span-2">
+                    <select name="status" class="w-full py-2.5 px-3 rounded-xl border border-gray-300 font-medium">
+                        <option value="">सभी स्थिति</option>
+                        <option value="COMPLETED" {% if status == 'COMPLETED' %}selected{% endif %}>COMPLETED</option>
+                        <option value="PENDING" {% if status == 'PENDING' %}selected{% endif %}>PENDING</option>
+                    </select>
+                </div>
+
+                <div class="sm:col-span-2 flex gap-2">
+                    <button type="submit" class="flex-1 py-2.5 px-3 rounded-xl bg-mandir-maroon text-white font-bold hover:bg-mandir-red transition">
+                        फिल्टर करें
+                    </button>
+                    <a href="{{ url_for('admin_dashboard') }}" class="py-2.5 px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-600 transition flex items-center justify-center" title="रीसेट">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Donations Table -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-yatra text-lg text-mandir-maroon">दान सूची (Donation Records)</h3>
+                <span class="text-xs text-gray-500 font-mono">{{ donations|length }} रिकॉर्ड्स प्रदर्शित</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-600 border-b border-gray-200 font-bold uppercase tracking-wider text-[11px]">
+                            <th class="py-3 px-4">रसीद सं.</th>
+                            <th class="py-3 px-4">दिनांक</th>
+                            <th class="py-3 px-4">दानदाता</th>
+                            <th class="py-3 px-4">मोबाइल</th>
+                            <th class="py-3 px-4">प्रयोजन (Purpose)</th>
+                            <th class="py-3 px-4">माध्यम</th>
+                            <th class="py-3 px-4">राशि (INR)</th>
+                            <th class="py-3 px-4">स्थिति</th>
+                            <th class="py-3 px-4 text-center">क्रियाएं</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        {% for d in donations %}
+                        <tr class="hover:bg-amber-50/40 transition">
+                            <td class="py-3 px-4 font-bold font-mono text-mandir-red">
+                                <a href="{{ url_for('view_receipt', receipt_no=d.receipt_no) }}" target="_blank" class="hover:underline">
+                                    {{ d.receipt_no }}
+                                </a>
+                            </td>
+                            <td class="py-3 px-4 text-gray-500 font-mono whitespace-nowrap">{{ d.created_at[:16] }}</td>
+                            <td class="py-3 px-4 font-semibold text-gray-800">
+                                {{ d.donor_name }}
+                                {% if d.gotra %}<span class="block text-[10px] text-gray-400 font-normal">गोत्र: {{ d.gotra }}</span>{% endif %}
+                            </td>
+                            <td class="py-3 px-4 font-mono text-gray-600">{{ d.phone }}</td>
+                            <td class="py-3 px-4 text-gray-700 max-w-xs truncate" title="{{ d.purpose }}">{{ d.purpose }}</td>
+                            <td class="py-3 px-4">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-700">
+                                    {{ d.gateway }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 font-bold font-mono text-mandir-maroon text-sm whitespace-nowrap">
+                                ₹{{ "{:,.2f}".format(d.amount) }}
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold {% if d.status == 'COMPLETED' %}bg-emerald-100 text-emerald-800{% else %}bg-amber-100 text-amber-800{% endif %}">
+                                    {{ d.status }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-center whitespace-nowrap">
+                                <div class="inline-flex items-center gap-1.5">
+                                    <a href="{{ url_for('view_receipt', receipt_no=d.receipt_no) }}" target="_blank" class="p-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700" title="रसीद देखें">
+                                        <i class="fa-solid fa-eye text-xs"></i>
+                                    </a>
+                                    <a href="{{ url_for('download_receipt_pdf', receipt_no=d.receipt_no) }}" class="p-1.5 rounded-lg bg-mandir-red hover:bg-mandir-crimson text-white" title="PDF डाउनलोड करें">
+                                        <i class="fa-solid fa-file-pdf text-xs"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="9" class="py-8 text-center text-gray-400">
+                                कोई दान रिकॉर्ड नहीं मिला।
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

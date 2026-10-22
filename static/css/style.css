@@ -1,0 +1,74 @@
+/* Custom Spiritual Styling for Shree Shree 108 Buri Kali Mandir */
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(217, 119, 6, 0.4), 0 0 30px rgba(136, 19, 55, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 0 50px rgba(153, 27, 27, 0.4);
+    }
+}
+
+.glow-sacred {
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Sacred Floral / Trishul Motif Background Pattern */
+.mandir-bg-pattern {
+    background-color: #fffbeb;
+    background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#881337 0.75px, #fffbeb 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    background-opacity: 0.05;
+}
+
+.mandir-gradient-hero {
+    background: linear-gradient(135deg, #4c0519 0%, #7f1d1d 35%, #991b1b 60%, #b45309 100%);
+}
+
+.mandir-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mandir-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px -5px rgba(136, 19, 55, 0.15), 0 8px 10px -6px rgba(217, 119, 6, 0.1);
+}
+
+/* Print Specific Styling for Receipts */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printableReceipt, #printableReceipt * {
+        visibility: visible;
+    }
+    #printableReceipt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none !important;
+        border: 2px solid #881337 !important;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #fffbeb;
+}
+::-webkit-scrollbar-thumb {
+    background: #d97706;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #991b1b;
+}

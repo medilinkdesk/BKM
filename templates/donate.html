@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+
+{% block title %}ऑनलाइन दान एवं संकल्प सेवा | श्री श्री १०८ बूढ़ी काली मंदिर लाइन पाड़ा, किशनगंज{% endblock %}
+
+{% block extra_head %}
+<!-- Razorpay Checkout SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- Cashfree Checkout SDK -->
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Donate Hero Banner -->
+<section class="mandir-gradient-hero text-white py-12 border-b-4 border-mandir-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 mandir-bg-pattern pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
+            पवित्र दान एवं पुण्य संकल्प
+        </span>
+        <h1 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+            ऑनलाइन दान सेवा (Razorpay, Cashfree & UPI)
+        </h1>
+        <p class="mt-2 text-xs sm:text-sm text-yellow-100/90 max-w-2xl mx-auto font-light">
+            श्री श्री १०८ बूढ़ी काली मंदिर, लाइन पाड़ा, किशनगंज (बिहार) - 855107। आपका प्रत्येक अंशदान मंदिर विकास, नित्य भोग एवं जनसेवा में समर्पित होता है।
+        </p>
+
+        {% if payment_mode == 'TEST' %}
+        <div class="mt-4 inline-flex items-center gap-2 bg-amber-500/20 text-yellow-200 text-xs font-semibold px-4 py-1.5 rounded-full border border-yellow-400/40">
+            <i class="fa-solid fa-flask-vial"></i>
+            <span>परीक्षण मोड (Test Sandbox Mode) सक्रिय है: आप बिना वास्तविक धनराशि के पूर्ण दान प्रक्रिया व रसीद का परीक्षण कर सकते हैं।</span>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Donation Form Section -->
+<section class="py-12 sm:py-16 bg-mandir-cream/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <form id="mandirDonationForm" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left 8 Cols: Seva, Amount & Donor Form -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- Step 1: Purpose Selection -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-mandir-gold/30 space-y-4">
+                    <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                        <span class="w-8 h-8 rounded-full bg-mandir-red text-white flex items-center justify-center font-bold text-sm">
+                            1
+                        </span>
+                        <h2 class="font-yatra text-xl text-mandir-maroon">दान संकल्प / सेवा का उद्देश्य चुनें</h2>
+                    </div>
+
+                    <div>
+                        <label for="donation_purpose" class="block text-xs font-bold text-gray-700 mb-2">
+                            दान का प्रयोजन (Seva Category) <span class="text-mandir-red">*</span>
+                        </label>
+                        <select id="donation_purpose" name="purpose" class="w-full p-3.5 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm font-medium bg-mandir-cream/30 text-gray-800">
+                            <option value="नित्य भोग एवं महाप्रसाद सेवा (Nitya Bhog Seva)">नित्य भोग एवं महाप्रसाद सेवा (Nitya Bhog Seva)</option>
+                            <option value="दीप दान एवं अखंड ज्योति सेवा (Deep Daan Seva)">दीप दान एवं अखंड ज्योति सेवा (Deep Daan Seva)</option>
+                            <option value="मंदिर जीर्णोद्धार एवं निर्माण कोष (Temple Renovation & Construction)">मंदिर जीर्णोद्धार एवं निर्माण कोष (Temple Renovation & Construction)</option>
+                            <option value="अमावस्या महापूजन एवं हवन संकल्प (Amavasya Maha Puja)">अमावस्या महापूजन एवं हवन संकल्प (Amavasya Maha Puja)</option>
+                            <option value="माता की प्रतिमा श्रृंगार एवं वस्त्र दान (Pratima Shringaar & Vastradan)">माता की प्रतिमा श्रृंगार एवं वस्त्र दान (Pratima Shringaar & Vastradan)</option>
+                            <option value="अन्नक्षेत्र एवं भंडारा सेवा (Annakshetra Seva)">अन्नक्षेत्र एवं भंडारा सेवा (Annakshetra Seva)</option>
+                            <option value="वार्षिक काली पूजा एवं मेला महोत्सव (Annual Kali Puja Mahotsav)">वार्षिक काली पूजा एवं मेला महोत्सव (Annual Kali Puja Mahotsav)</option>
+                            <option value="सामान्य मंदिर कल्याण दान (General Temple Welfare)">सामान्य मंदिर कल्याण दान (General Temple Welfare)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 2: Amount Selection -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-mandir-gold/30 space-y-4">
+                    <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                        <span class="w-8 h-8 rounded-full bg-mandir-red text-white flex items-center justify-center font-bold text-sm">
+                            2
+                        </span>
+                        <h2 class="font-yatra text-xl text-mandir-maroon">दान राशि का चयन करें</h2>
+                    </div>
+
+                    <!-- Preset Chips -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border border-gray-300 text-center font-bold text-sm transition hover:border-mandir-red bg-white text-gray-800" data-amount="251">
+                            ₹251
+                        </button>
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border border-gray-300 text-center font-bold text-sm transition hover:border-mandir-red bg-white text-gray-800" data-amount="501">
+                            ₹501
+                        </button>
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border-2 border-mandir-red bg-mandir-red text-white text-center font-bold text-sm transition shadow-sm" data-amount="1100">
+                            ₹1,100 <span class="text-[10px] block font-normal">(प्रशंसित)</span>
+                        </button>
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border border-gray-300 text-center font-bold text-sm transition hover:border-mandir-red bg-white text-gray-800" data-amount="2100">
+                            ₹2,100
+                        </button>
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border border-gray-300 text-center font-bold text-sm transition hover:border-mandir-red bg-white text-gray-800" data-amount="5100">
+                            ₹5,100
+                        </button>
+                        <button type="button" class="amount-btn p-3.5 rounded-2xl border border-gray-300 text-center font-bold text-sm transition hover:border-mandir-red bg-white text-gray-800" data-amount="11000">
+                            ₹11,000
+                        </button>
+                    </div>
+
+                    <!-- Custom Amount Input -->
+                    <div class="pt-2">
+                        <label for="customAmount" class="block text-xs font-bold text-gray-700 mb-1.5">
+                            अथवा अपनी इच्छानुसार राशि (Custom Amount) दर्ज करें:
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3.5 text-gray-500 font-bold text-base">₹</span>
+                            <input type="number" id="customAmount" min="11" step="1" value="1100" class="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 font-bold text-base text-gray-800">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment Gateway Choice -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-mandir-gold/30 space-y-4">
+                    <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                        <span class="w-8 h-8 rounded-full bg-mandir-red text-white flex items-center justify-center font-bold text-sm">
+                            3
+                        </span>
+                        <h2 class="font-yatra text-xl text-mandir-maroon">भुगतान माध्यम (Payment Gateway) चुनें</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        
+                        <!-- Option 1: Razorpay -->
+                        <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red hover:bg-mandir-lightgold/30 transition flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-mandir-maroon">Razorpay PG</span>
+                                <input type="radio" name="gateway" value="RAZORPAY" checked class="text-mandir-red focus:ring-mandir-red">
+                            </div>
+                            <p class="text-[11px] text-gray-500">क्रेडिट कार्ड, डेबिट कार्ड, नेटबैंकिंग, UPI एवं वॉलेट्स</p>
+                            <span class="mt-3 text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold w-max">
+                                तत्काल रसीद
+                            </span>
+                        </label>
+
+                        <!-- Option 2: Cashfree -->
+                        <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red hover:bg-mandir-lightgold/30 transition flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-mandir-maroon">Cashfree PG</span>
+                                <input type="radio" name="gateway" value="CASHFREE" class="text-mandir-red focus:ring-mandir-red">
+                            </div>
+                            <p class="text-[11px] text-gray-500">फास्ट चेकआउट, पे-बाय-UPI, कार्ड्स एवं बैंकिंग</p>
+                            <span class="mt-3 text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold w-max">
+                                कैशफ्री सुरक्षित
+                            </span>
+                        </label>
+
+                        <!-- Option 3: Direct Mandir UPI QR -->
+                        <label class="cursor-pointer border-2 border-mandir-gold/60 p-4 rounded-2xl hover:border-mandir-red hover:bg-mandir-lightgold/30 transition flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-sm text-mandir-maroon">Direct UPI QR</span>
+                                <input type="radio" name="gateway" value="UPI_QR" class="text-mandir-red focus:ring-mandir-red">
+                            </div>
+                            <p class="text-[11px] text-gray-500">PhonePe, GPay, Paytm से QR स्कैन करें + UTR दर्ज करें</p>
+                            <span class="mt-3 text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold w-max">
+                                शून्य गेटवे शुल्क
+                            </span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- Step 4: Donor Details Form -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-mandir-gold/30 space-y-4">
+                    <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                        <span class="w-8 h-8 rounded-full bg-mandir-red text-white flex items-center justify-center font-bold text-sm">
+                            4
+                        </span>
+                        <h2 class="font-yatra text-xl text-mandir-maroon">दानदाता विवरण (Donor Details)</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <label for="donor_name" class="block font-bold text-gray-700 mb-1">
+                                दानदाता का पूरा नाम (Full Name) <span class="text-mandir-red">*</span>
+                            </label>
+                            <input type="text" id="donor_name" required placeholder="जैसे: अमित कुमार शर्मा" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm">
+                        </div>
+
+                        <div>
+                            <label for="donor_phone" class="block font-bold text-gray-700 mb-1">
+                                मोबाइल नंबर (Mobile No.) <span class="text-mandir-red">*</span>
+                            </label>
+                            <input type="tel" id="donor_phone" required placeholder="10 अंकों का मोबाइल नंबर" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm">
+                        </div>
+
+                        <div>
+                            <label for="donor_email" class="block font-bold text-gray-700 mb-1">
+                                ईमेल आईडी (Email ID - Optional)
+                            </label>
+                            <input type="email" id="donor_email" placeholder="रसीद प्राप्त करने हेतु ईमेल" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm">
+                        </div>
+
+                        <div>
+                            <label for="donor_gotra" class="block font-bold text-gray-700 mb-1">
+                                गोत्र (Gotra - संकल्प हेतु)
+                            </label>
+                            <input type="text" id="donor_gotra" placeholder="जैसे: कश्यप, भारद्वाज, शांडिल्य" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm">
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="donor_address" class="block font-bold text-gray-700 mb-1">
+                                पूर्ण पता / शहर / राज्य (Address & City)
+                            </label>
+                            <input type="text" id="donor_address" placeholder="जैसे: लाइन पाड़ा, किशनगंज, बिहार" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm">
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="donor_pan" class="block font-bold text-gray-700 mb-1">
+                                पैन नंबर (PAN Number - आयकर छूट 80G रसीद हेतु, यदि उपलब्ध हो)
+                            </label>
+                            <input type="text" id="donor_pan" placeholder="ABCDE1234F" class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red focus:ring-2 focus:ring-mandir-red/20 text-sm uppercase">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right 4 Cols: Order Summary & Submit Sticky Card -->
+            <div class="lg:col-span-4">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-mandir-gold sticky top-28 space-y-6">
+                    <div class="text-center pb-4 border-b border-gray-100">
+                        <span class="w-12 h-12 rounded-full bg-mandir-crimson text-yellow-300 flex items-center justify-center mx-auto text-xl mb-2 shadow">
+                            ॐ
+                        </span>
+                        <h3 class="font-yatra text-2xl text-mandir-maroon">दान सारांश</h3>
+                        <p class="text-xs text-gray-500">{{ temple_name_hi }}</p>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600">पवित्र दान राशि:</span>
+                            <span id="summaryAmount" class="font-bold text-2xl text-mandir-red font-mono">₹1,100</span>
+                        </div>
+
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600">गेटवे शुल्क:</span>
+                            <span class="font-semibold text-emerald-600">₹0 (निःशुल्क)</span>
+                        </div>
+
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600">डिजिटल रसीद:</span>
+                            <span class="font-semibold text-gray-800">तत्काल PDF डाउनलोड</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitDonationBtn" class="w-full py-4 rounded-2xl bg-gradient-to-r from-mandir-red via-mandir-crimson to-mandir-maroon text-white font-bold text-sm shadow-xl hover:shadow-2xl hover:scale-102 active:scale-98 transition duration-300 border-2 border-mandir-gold flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-hands-praying text-yellow-300 text-base"></i>
+                        <span>दान पूर्ण करें (Proceed to Donate)</span>
+                    </button>
+
+                    <!-- Trust Badges -->
+                    <div class="pt-2 text-center space-y-2 text-[11px] text-gray-500">
+                        <p class="flex items-center justify-center gap-1.5 text-emerald-700 font-semibold">
+                            <i class="fa-solid fa-shield-check text-emerald-600"></i> Razorpay & Cashfree सुरक्षित भुगतान
+                        </p>
+                        <p>लाइन पाड़ा, किशनगंज (बिहार) - 855107</p>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+<!-- Direct UPI QR Modal (When UPI_QR Selected) -->
+<div id="upiQrModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-4 border-mandir-gold text-center space-y-4 max-h-[90vh] overflow-y-auto">
+        
+        <div class="flex justify-between items-center border-b pb-3">
+            <h3 class="font-yatra text-xl text-mandir-maroon">सीधा मंदिर UPI QR स्कैन</h3>
+            <button onclick="document.getElementById('upiQrModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-700">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <p class="text-xs text-gray-600">
+            अपने PhonePe, Google Pay, Paytm अथवा किसी भी UPI ऐप से यह QR कोड स्कैन कर दान राशि भुगतान करें:
+        </p>
+
+        <!-- Dynamic QR Container -->
+        <div class="p-4 bg-mandir-cream rounded-2xl border-2 border-mandir-gold/40 inline-block shadow-inner">
+            <img id="upiQrImage" src="" alt="Mandir UPI QR" class="w-48 h-48 mx-auto rounded-lg">
+        </div>
+
+        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-left space-y-1">
+            <p><span class="text-gray-500">दान राशि:</span> <b id="modalUpiAmount" class="text-mandir-red text-base font-mono">₹1,100</b></p>
+            <p><span class="text-gray-500">आधिकारिक UPI ID:</span> <b id="modalUpiId" class="text-gray-800 font-mono select-all">burhikalimandir@upi</b></p>
+            <p><span class="text-gray-500">अस्थायी रसीद सं:</span> <span id="modalUpiReceiptNo" class="font-mono font-semibold text-mandir-maroon"></span></p>
+        </div>
+
+        <!-- UTR Input Form -->
+        <div class="text-left space-y-2 pt-2">
+            <label for="utrNumberInput" class="block text-xs font-bold text-gray-800">
+                भुगतान उपरांत 12 अंकों का UTR / Transaction No. यहां दर्ज करें:
+            </label>
+            <input type="text" id="utrNumberInput" placeholder="जैसे: 329482910482" class="w-full p-3 rounded-xl border-2 border-mandir-red font-mono text-sm focus:ring-2 focus:ring-mandir-red/20">
+            <input type="hidden" id="modalUpiDonationId" value="">
+        </div>
+
+        <div class="pt-2">
+            <button type="button" id="submitUtrBtn" onclick="submitUpiUtr()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold text-sm shadow-lg hover:brightness-110 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-receipt"></i>
+                <span>सत्यापित करें एवं रसीद पाएं (Verify & Get Receipt)</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/donation.js') }}"></script>
+<script>
+    // Auto populate amount from URL query parameter if present
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const amtParam = urlParams.get('amount');
+        if (amtParam) {
+            const btn = document.querySelector(`.amount-btn[data-amount="${amtParam}"]`);
+            if (btn) {
+                btn.click();
+            } else {
+                const customInput = document.getElementById('customAmount');
+                if (customInput) {
+                    customInput.value = amtParam;
+                    customInput.dispatchEvent(new Event('input'));
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

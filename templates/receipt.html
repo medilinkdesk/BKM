@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}दान पावती रसीद सं. {{ donation.receipt_no }} | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="py-12 bg-mandir-cream/60">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+        <!-- Top Action Bar -->
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-4 no-print">
+            <a href="{{ url_for('donate') }}" class="text-xs font-semibold text-mandir-maroon hover:text-mandir-red flex items-center gap-1.5">
+                <i class="fa-solid fa-arrow-left"></i> पुनः दान करें (New Donation)
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-white border border-gray-300 font-bold text-xs text-gray-700 hover:bg-gray-50 shadow-sm flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-print text-mandir-maroon"></i> रसीद प्रिंट करें (Print)
+                </button>
+                <a href="{{ url_for('download_receipt_pdf', receipt_no=donation.receipt_no) }}" class="px-5 py-2 rounded-xl bg-mandir-red hover:bg-mandir-crimson font-bold text-xs text-white shadow-md flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-file-arrow-down text-yellow-300"></i> PDF रसीद डाउनलोड करें
+                </a>
+            </div>
+        </div>
+
+        <!-- Success Toast Alert -->
+        <div class="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 flex items-center gap-3 shadow-sm no-print">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm">दान सफलतापूर्वक स्वीकृत हुआ! (Donation Accepted)</h4>
+                <p class="text-xs text-emerald-800">मां बूढ़ी काली आपके परिवार पर सदा अपनी असीम कृपा बनाए रखें। यह आपकी आधिकारिक डिजिटल पावती है।</p>
+            </div>
+        </div>
+
+        <!-- Official Receipt Card (Printable) -->
+        <div id="printableReceipt" class="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-mandir-gold relative overflow-hidden">
+            
+            <!-- Watermark Background -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none select-none">
+                <span class="font-serif_spiritual font-black text-7xl text-mandir-maroon text-center rotate-[-25deg]">
+                    BURI KALI MANDIR<br>KISHANGANJ
+                </span>
+            </div>
+
+            <!-- Header -->
+            <div class="text-center pb-6 border-b-2 border-mandir-gold/40 relative z-10">
+                <p class="text-xs font-bold text-mandir-amber tracking-widest uppercase mb-1">॥ ॐ क्रीं कालिकायै नमः ॥</p>
+                <h1 class="font-yatra text-2xl sm:text-3xl text-mandir-maroon leading-tight">
+                    {{ temple_name_hi }}
+                </h1>
+                <p class="font-serif_spiritual text-xs sm:text-sm font-bold text-gray-700 tracking-wide">
+                    SHREE SHREE 108 BURI KALI MANDIR MANAGEMENT TRUST
+                </p>
+                <p class="text-xs text-gray-500 mt-1">
+                    लाइन पाड़ा, किशनगंज, बिहार - 855107 | पंजीयन सं: BR-KSG-BKM/1902-TRUST
+                </p>
+                <p class="text-[11px] text-gray-400">
+                    हेल्पलाइन: {{ temple_phone }} | ईमेल: {{ temple_email }}
+                </p>
+
+                <!-- Receipt Title Badge -->
+                <div class="mt-4 inline-block bg-mandir-lightgold text-mandir-maroon font-bold text-xs uppercase px-5 py-1.5 rounded-full border border-mandir-gold shadow-sm">
+                    दान एवं सहयोग पावती (OFFICIAL DONATION RECEIPT)
+                </div>
+            </div>
+
+            <!-- Receipt Meta Bar -->
+            <div class="my-6 p-4 rounded-2xl bg-amber-50/70 border border-amber-200 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs relative z-10">
+                <div>
+                    <span class="text-gray-500 block">रसीद संख्या (Receipt No):</span>
+                    <b class="text-mandir-red font-mono text-sm">{{ donation.receipt_no }}</b>
+                </div>
+                <div>
+                    <span class="text-gray-500 block">दिनांक व समय (Date):</span>
+                    <b class="text-gray-800 font-mono">{{ donation.created_at }}</b>
+                </div>
+                <div>
+                    <span class="text-gray-500 block">भुगतान माध्यम (Mode):</span>
+                    <b class="text-gray-800">{{ donation.gateway }}</b>
+                </div>
+                <div>
+                    <span class="text-gray-500 block">लेनदेन संदर्भ (Txn ID):</span>
+                    <b class="text-gray-800 font-mono truncate block" title="{{ donation.payment_id or donation.order_id }}">{{ donation.payment_id or donation.order_id or 'COMPLETED' }}</b>
+                </div>
+            </div>
+
+            <!-- Donor & Sankalp Details Table -->
+            <div class="space-y-4 text-xs relative z-10">
+                <table class="w-full border-collapse">
+                    <tbody>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500 w-1/3">दानदाता का नाम (Donor Name):</td>
+                            <td class="py-2.5 font-bold text-gray-800 text-sm">{{ donation.donor_name }}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">मोबाइल नंबर (Mobile No.):</td>
+                            <td class="py-2.5 font-mono text-gray-800">{{ donation.phone }}</td>
+                        </tr>
+                        {% if donation.email %}
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">ईमेल आईडी (Email):</td>
+                            <td class="py-2.5 text-gray-800">{{ donation.email }}</td>
+                        </tr>
+                        {% endif %}
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">गोत्र (Gotra):</td>
+                            <td class="py-2.5 text-gray-800">{{ donation.gotra or 'कश्यप / सर्वगोत्र' }}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">पता / नगर (Address):</td>
+                            <td class="py-2.5 text-gray-800">{{ donation.address or 'किशनगंज, बिहार' }}</td>
+                        </tr>
+                        {% if donation.pan %}
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">पैन नंबर (PAN - For 80G):</td>
+                            <td class="py-2.5 font-mono font-bold text-gray-800">{{ donation.pan }}</td>
+                        </tr>
+                        {% endif %}
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2.5 text-gray-500">दान का प्रयोजन (Purpose):</td>
+                            <td class="py-2.5 font-bold text-mandir-maroon">{{ donation.purpose }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Amount Box -->
+                <div class="mt-6 p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border-2 border-emerald-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-emerald-800 font-semibold block">समर्पित दान राशि (Total Amount Contributed):</span>
+                        <span class="text-3xl font-extrabold text-mandir-maroon font-mono">₹{{ "{:,.2f}".format(donation.amount) }}</span>
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">
+                            <i class="fa-solid fa-check-double mr-1"></i> भुगतान सफल (COMPLETED)
+                        </span>
+                        <p class="text-[11px] text-gray-500 mt-1">शून्य बकाया राशि</p>
+                    </div>
+                </div>
+
+                <!-- Divine Blessing Quote -->
+                <div class="mt-8 text-center text-xs text-mandir-maroon italic p-3 bg-mandir-cream rounded-xl border border-mandir-gold/30">
+                    "मां बूढ़ी काली आपकी समस्त मनोकामनाएं पूर्ण करें एवं आपके परिवार पर अपनी असीम अनुकंपा सदा बनाए रखें।"
+                </div>
+
+                <!-- Signature & Stamp Seal -->
+                <div class="mt-10 pt-6 border-t border-gray-200 grid grid-cols-3 items-end text-center text-[11px] text-gray-500">
+                    <div>
+                        <p class="font-mono text-gray-400">Computer Verified</p>
+                        <p class="font-semibold text-gray-700">लेखा विभाग</p>
+                    </div>
+                    <div>
+                        <div class="w-20 h-20 mx-auto rounded-full border-2 border-dashed border-mandir-red/60 flex items-center justify-center p-1 bg-mandir-red/5">
+                            <span class="text-[9px] font-bold text-mandir-red leading-tight text-center">
+                                बूढ़ी काली मंदिर<br>न्यास समिति<br>किशनगंज
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-serif italic text-gray-700 font-semibold">Authorized Signatory</p>
+                        <p class="font-semibold text-gray-700">मुख्य पुजारी / सचिव</p>
+                    </div>
+                </div>
+
+                <p class="text-[10px] text-center text-gray-400 mt-4">
+                    यह एक इलेक्ट्रॉनिक रूप से उत्पन्न पावती है। भौतिक हस्ताक्षर की आवश्यकता नहीं है।
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

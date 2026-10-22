@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}समिति व्यवस्थापक लॉगिन | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-mandir-cream/60 flex items-center justify-center min-h-[70vh]">
+    <div class="max-w-md w-full mx-4">
+        
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border-4 border-mandir-gold space-y-6">
+            <div class="text-center">
+                <div class="w-16 h-16 rounded-full bg-mandir-crimson text-yellow-300 flex items-center justify-center mx-auto text-2xl mb-3 shadow glow-sacred">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h1 class="font-yatra text-2xl text-mandir-maroon">मंदिर प्रबंधन समिति लॉगिन</h1>
+                <p class="text-xs text-gray-500 mt-1">व्यवस्थापक व लेखा अनुभाग पोर्टल (Admin Portal)</p>
+            </div>
+
+            <form action="{{ url_for('admin_login') }}" method="POST" class="space-y-4 text-xs">
+                <div>
+                    <label for="username" class="block font-bold text-gray-700 mb-1">यूजरनेम (Username)</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-gray-400"></i>
+                        <input type="text" id="username" name="username" required value="admin" class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:border-mandir-red text-sm font-medium">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="block font-bold text-gray-700 mb-1">पासवर्ड (Password)</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-key absolute left-3.5 top-3.5 text-gray-400"></i>
+                        <input type="password" id="password" name="password" required value="kali108@ksg" class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:border-mandir-red text-sm font-medium">
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-mandir-red to-mandir-crimson text-white font-bold text-sm shadow-lg hover:brightness-110 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-right-to-bracket text-yellow-300"></i>
+                        <span>लॉगिन करें (Secure Login)</span>
+                    </button>
+                </div>
+
+                <div class="pt-3 border-t border-gray-100 text-center text-[11px] text-gray-400">
+                    <p>डिफ़ॉल्ट क्रेडेंशियल्स: <code class="bg-gray-100 px-1 py-0.5 rounded text-gray-700">admin</code> / <code class="bg-gray-100 px-1 py-0.5 rounded text-gray-700">kali108@ksg</code></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

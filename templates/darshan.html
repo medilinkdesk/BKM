@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}दर्शन एवं आरती समय सारिणी | श्री श्री १०८ बूढ़ी काली मंदिर लाइन पाड़ा, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="mandir-gradient-hero text-white py-14 border-b-4 border-mandir-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 mandir-bg-pattern pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
+            नित्य दर्शन एवं पावन अनुष्ठान
+        </span>
+        <h1 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+            दैनिक दर्शन, महाआरती एवं पूजा समय सारिणी
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-yellow-100/90 max-w-2xl mx-auto font-light">
+            लाइन पाड़ा, किशनगंज स्थित मंदिर परिसर में नित्य होने वाली आरतियों, भोग एवं विशेष पर्वों के दर्शन समय की आधिकारिक जानकारी।
+        </p>
+    </div>
+</section>
+
+<section class="py-16 bg-mandir-cream/40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+        <!-- Timings Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Morning Schedule -->
+            <div class="bg-white rounded-3xl p-8 shadow-lg border-2 border-mandir-gold/30">
+                <div class="flex items-center gap-3 pb-4 mb-6 border-b border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-2xl text-mandir-maroon">प्रातःकालीन दर्शन एवं आरती</h2>
+                        <p class="text-xs text-gray-500">कपाट खुलने का समय: प्रातः 05:30 बजे</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-cream border border-mandir-gold/30">
+                        <div>
+                            <span class="font-bold text-mandir-maroon text-sm block">प्रातः कपाट खुलना</span>
+                            <span class="text-gray-500">मंदिर गर्भगृह का पावन द्वार खुलता है</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">05:30 AM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-cream border border-mandir-gold/30">
+                        <div>
+                            <span class="font-bold text-mandir-maroon text-sm block">मंगला आरती</span>
+                            <span class="text-gray-500">मां की प्रथम स्तुति एवं धूप-दीप दर्शन</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">06:00 AM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-cream border border-mandir-gold/30">
+                        <div>
+                            <span class="font-bold text-mandir-maroon text-sm block">मध्याह्न राजभोग आरती</span>
+                            <span class="text-gray-500">अन्न-प्रसाद नैवेद्य अर्पण व महाभोग</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">12:00 PM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200">
+                        <div>
+                            <span class="font-bold text-gray-700 text-sm block">मध्याह्न कपाट बंदी (विश्राम)</span>
+                            <span class="text-gray-500">दोपहर में मंदिर कपाट बंद रहते हैं</span>
+                        </div>
+                        <span class="font-bold font-mono text-gray-600 text-base">12:30 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evening Schedule -->
+            <div class="bg-white rounded-3xl p-8 shadow-lg border-2 border-mandir-gold/30">
+                <div class="flex items-center gap-3 pb-4 mb-6 border-b border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-2xl text-mandir-maroon">सायंकालीन दर्शन एवं महाआरती</h2>
+                        <p class="text-xs text-gray-500">कपाट खुलने का समय: सायं 04:30 बजे</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-cream border border-mandir-gold/30">
+                        <div>
+                            <span class="font-bold text-mandir-maroon text-sm block">सायं कपाट खुलना</span>
+                            <span class="text-gray-500">भक्तों के दर्शनार्थ कपाट पुनः खुलते हैं</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">04:30 PM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-red/10 border-2 border-mandir-red">
+                        <div>
+                            <span class="font-bold text-mandir-red text-sm block flex items-center gap-1.5">
+                                <i class="fa-solid fa-bell animate-bounce"></i> संध्या महाआरती (मुख्य)
+                            </span>
+                            <span class="text-gray-600">शंख, घंटा, नगाड़ा एवं विशेष दीप महाआरती</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">07:00 PM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-mandir-cream border border-mandir-gold/30">
+                        <div>
+                            <span class="font-bold text-mandir-maroon text-sm block">शयन आरती</span>
+                            <span class="text-gray-500">रात्रि अंतिम स्तुति व विश्राम वंदना</span>
+                        </div>
+                        <span class="font-bold font-mono text-mandir-red text-base">09:15 PM</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200">
+                        <div>
+                            <span class="font-bold text-gray-700 text-sm block">रात्रि कपाट बंदी</span>
+                            <span class="text-gray-500">रात्रि में मंदिर परिसर बंद होने का समय</span>
+                        </div>
+                        <span class="font-bold font-mono text-gray-600 text-base">09:30 PM</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Special Days & Amavasya Section -->
+        <div class="bg-gradient-to-r from-mandir-crimson to-mandir-maroon rounded-3xl p-8 sm:p-10 text-white shadow-xl border-2 border-mandir-gold">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+                
+                <div class="border-b md:border-b-0 md:border-r border-mandir-gold/20 pb-4 md:pb-0 md:pr-4">
+                    <span class="text-xs font-bold text-yellow-300 uppercase tracking-widest block mb-1">विशेष दिन</span>
+                    <h3 class="font-yatra text-xl text-white mb-2">शनिवार व मंगलवार</h3>
+                    <p class="text-xs text-yellow-100/80 leading-relaxed">
+                        सप्ताह के इन दो दिनों में विशेष तांत्रिक-वैदिक रक्षा स्तोत्र, सिंदूर अर्पण एवं नारियल बलि/प्रसाद चढ़ाने वाले श्रद्धालुओं का विशाल तांता लगता है।
+                    </p>
+                </div>
+
+                <div class="border-b md:border-b-0 md:border-r border-mandir-gold/20 pb-4 md:pb-0 md:pr-4">
+                    <span class="text-xs font-bold text-yellow-300 uppercase tracking-widest block mb-1">मासिक पर्व</span>
+                    <h3 class="font-yatra text-xl text-white mb-2">मासिक अमावस्या निशि पूजा</h3>
+                    <p class="text-xs text-yellow-100/80 leading-relaxed">
+                        प्रत्येक माह की कृष्ण पक्ष अमावस्या को रात्रि 11:30 बजे से विशेष तांत्रिक निशि पूजा, शांति हवन एवं मध्यरात्रि 12:30 बजे महाआरती संपन्न होती है।
+                    </p>
+                </div>
+
+                <div>
+                    <span class="text-xs font-bold text-yellow-300 uppercase tracking-widest block mb-1">वार्षिक महामहोत्सव</span>
+                    <h3 class="font-yatra text-xl text-white mb-2">कार्तिक अमावस्या काली पूजा</h3>
+                    <p class="text-xs text-yellow-100/80 leading-relaxed">
+                        दीपावली की रात वार्षिक महाकाली पूजनोत्सव, 1 वर्ष पुरानी प्रतिमा का विसर्जन, नई प्रतिमा की स्थापना एवं विशाल मेले का आयोजन होता है।
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Sanctum Rules -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-mandir-gold/30">
+            <h3 class="font-yatra text-xl text-mandir-maroon mb-4 pb-2 border-b border-gray-100">
+                दर्शनार्थी नियम एवं गर्भगृह मर्यादा (Sanctum Guidelines)
+            </h3>
+            <ul class="space-y-2.5 text-xs text-gray-700">
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                    <span>मंदिर परिसर में प्रवेश से पूर्व मुख्य द्वार पर जूते-चप्पल उतारकर हाथ-पैर अवश्य धोएं।</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                    <span>गर्भगृह के ठीक सम्मुख अनावश्यक रूप से खड़े रहकर अन्य दर्शनार्थियों की दृष्टि न रोकें।</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                    <span>आरती के समय शांति बनाए रखें तथा जयघोष में सम्मिलित हों। गर्भगृह के भीतर मोबाइल फोटोग्राफी प्रतिबंधित है।</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
+                    <span>प्रसाद एवं दान केवल आधिकारिक मंदिर कार्यालय अथवा इस अधिकृत वेबसाइट के माध्यम से ही समर्पित कर पक्की रसीद लें।</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}ऑनलाइन पूजा एवं भोग संकल्प पंजीयन | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="mandir-gradient-hero text-white py-12 border-b-4 border-mandir-gold relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 mandir-bg-pattern pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span class="inline-block px-4 py-1 rounded-full bg-black/40 text-yellow-300 text-xs font-bold uppercase tracking-widest border border-yellow-400/40 mb-3">
+            ऑनलाइन संकल्प सेवा
+        </span>
+        <h1 class="font-yatra text-3xl sm:text-5xl text-yellow-300 leading-tight">
+            विशेष पूजा, हवन एवं भोग संकल्प पंजीयन
+        </h1>
+        <p class="mt-2 text-xs sm:text-sm text-yellow-100/90 max-w-2xl mx-auto font-light">
+            घर बैठे अपने नाम व गोत्र से मां बूढ़ी काली के चरणों में विशेष अनुष्ठान, चंडी पाठ अथवा अमावस्या हवन का संकल्प दर्ज करें।
+        </p>
+    </div>
+</section>
+
+<section class="py-14 bg-mandir-cream/50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-mandir-gold">
+            <div class="text-center pb-6 border-b border-gray-100">
+                <span class="w-12 h-12 rounded-full bg-mandir-red text-white flex items-center justify-center mx-auto text-xl mb-2 shadow">
+                    <i class="fa-solid fa-fire"></i>
+                </span>
+                <h2 class="font-yatra text-2xl text-mandir-maroon">पूजा संकल्प फॉर्म</h2>
+                <p class="text-xs text-gray-500">मंदिर के वंशानुगत पुरोहित द्वारा विधि-विधान से आपके नाम से संकल्प संपन्न कराया जाएगा</p>
+            </div>
+
+            <form action="{{ url_for('puja_booking') }}" method="POST" class="py-6 space-y-4 text-xs">
+                
+                <div>
+                    <label for="puja_type" class="block font-bold text-gray-700 mb-1">
+                        पूजा का प्रकार (Select Puja / Seva Type) <span class="text-mandir-red">*</span>
+                    </label>
+                    <select id="puja_type" name="puja_type" required class="w-full p-3 rounded-xl border border-gray-300 focus:border-mandir-red text-sm font-medium bg-mandir-cream/30">
+                        <option value="मासिक अमावस्या महापूजन एवं शांति हवन (₹2,100)">मासिक अमावस्या महापूजन एवं शांति हवन (₹2,100)</option>
+                        <option value="नित्य भोग एवं महाप्रसाद सेवा (₹1,100)">नित्य भोग एवं महाप्रसाद सेवा (₹1,100)</option>
+                        <option value="विशेष षोडशोपचार पूजन एवं चंडी पाठ (₹3,100)">विशेष षोडशोपचार पूजन एवं चंडी पाठ (₹3,100)</option>
+                        <option value="माता की प्रतिमा श्रृंगार, सिंदूर व चुनरी अर्पण (₹2,500)">माता की प्रतिमा श्रृंगार, सिंदूर व चुनरी अर्पण (₹2,500)</option>
+                        <option value="अखंड दीप दान एवं 108 पुष्पांजलि (₹501)">अखंड दीप दान एवं 108 पुष्पांजलि (₹501)</option>
+                        <option value="जन्मदिन अथवा विवाह वर्षगांठ पर विशेष मंगलाचरण (₹1,500)">जन्मदिन अथवा विवाह वर्षगांठ पर विशेष मंगलाचरण (₹1,500)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block font-bold text-gray-700 mb-1">
+                            यजमान / श्रद्धालु का नाम (Name) <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" required placeholder="जैसे: राकेश कुमार" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block font-bold text-gray-700 mb-1">
+                            मोबाइल नंबर (WhatsApp / Call) <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="10 अंकों का मोबाइल नंबर" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="gotra" class="block font-bold text-gray-700 mb-1">
+                            गोत्र (Gotra - संकल्प हेतु अनिवार्य) <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="text" id="gotra" name="gotra" required placeholder="जैसे: कश्यप, भारद्वाज" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="puja_date" class="block font-bold text-gray-700 mb-1">
+                            पूजा की तिथि (Preferred Date) <span class="text-mandir-red">*</span>
+                        </label>
+                        <input type="date" id="puja_date" name="puja_date" required class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="sankalp" class="block font-bold text-gray-700 mb-1">
+                        विशेष मनोकामना / संकल्प विवरण (Special Prayer Note)
+                    </label>
+                    <textarea id="sankalp" name="sankalp" rows="3" placeholder="जैसे: पारिवारिक सुख-शांति, उत्तम स्वास्थ्य, विवाह बाधा निवारण या व्यापार वृद्धि हेतु..." class="w-full p-3 rounded-xl border border-gray-300 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-2xl bg-mandir-red hover:bg-mandir-crimson text-white font-bold text-sm shadow-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-om text-yellow-300"></i>
+                    <span>संकल्प पंजीयन जमा करें (Submit Puja Request)</span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

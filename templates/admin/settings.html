@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}पेमेंट गेटवे एवं पोर्टल सेटिंग्स | श्री श्री १०८ बूढ़ी काली मंदिर, किशनगंज{% endblock %}
+
+{% block content %}
+<section class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+
+        <!-- Top Header & Back -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="{{ url_for('admin_dashboard') }}" class="p-2 rounded-xl bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div>
+                    <h1 class="font-yatra text-2xl text-mandir-maroon">पेमेंट गेटवे एवं मंदिर पोर्टल सेटिंग्स</h1>
+                    <p class="text-xs text-gray-500">Razorpay, Cashfree एवं UPI कॉन्फ़िगरेशन</p>
+                </div>
+            </div>
+            <a href="{{ url_for('admin_dashboard') }}" class="text-xs font-semibold text-mandir-red hover:underline">
+                डैशबोर्ड पर लौटें
+            </a>
+        </div>
+
+        <form action="{{ url_for('admin_settings') }}" method="POST" class="space-y-6">
+            
+            <!-- Section 1: Gateway Mode Switch -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                    <div class="w-10 h-10 rounded-xl bg-mandir-red text-white flex items-center justify-center">
+                        <i class="fa-solid fa-power-off"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-lg text-mandir-maroon">भुगतान मोड (Payment Mode)</h2>
+                        <p class="text-xs text-gray-500">परीक्षण एवं लाइव मोड के बीच स्विच करें</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <label class="cursor-pointer p-4 rounded-2xl border-2 {% if settings.get('payment_mode') == 'TEST' %}border-amber-500 bg-amber-50/50{% else %}border-gray-200{% endif %} flex items-start gap-3">
+                        <input type="radio" name="payment_mode" value="TEST" {% if settings.get('payment_mode') == 'TEST' %}checked{% endif %} class="mt-1 text-mandir-red focus:ring-mandir-red">
+                        <div>
+                            <span class="font-bold text-sm text-gray-800 block">TEST / SIMULATION MODE (परीक्षण मोड)</span>
+                            <span class="text-gray-500 mt-0.5 block leading-relaxed">
+                                बिना वास्तविक बैंक खाते के पूरे भुगतान, ऑर्डर सत्यापन और डिजिटल PDF रसीद जनरेशन का डेमो परीक्षण करने के लिए उपयुक्त।
+                            </span>
+                        </div>
+                    </label>
+
+                    <label class="cursor-pointer p-4 rounded-2xl border-2 {% if settings.get('payment_mode') == 'LIVE' %}border-emerald-600 bg-emerald-50/50{% else %}border-gray-200{% endif %} flex items-start gap-3">
+                        <input type="radio" name="payment_mode" value="LIVE" {% if settings.get('payment_mode') == 'LIVE' %}checked{% endif %} class="mt-1 text-mandir-red focus:ring-mandir-red">
+                        <div>
+                            <span class="font-bold text-sm text-gray-800 block">LIVE GATEWAY MODE (वास्तविक मोड)</span>
+                            <span class="text-gray-500 mt-0.5 block leading-relaxed">
+                                श्रद्धालुओं से सीधे वास्तविक धनराशि Razorpay एवं Cashfree के माध्यम से मंदिर के बैंक खाते में प्राप्त करने हेतु।
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Section 2: Razorpay Credentials -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                    <div class="w-10 h-10 rounded-xl bg-blue-900 text-yellow-300 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-lg text-mandir-maroon">Razorpay API Credentials</h2>
+                        <p class="text-xs text-gray-500">अपने Razorpay डैशबोर्ड (Settings > API Keys) से प्राप्त कुंजियां</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div>
+                        <label for="razorpay_key_id" class="block font-bold text-gray-700 mb-1">Razorpay Key ID</label>
+                        <input type="text" id="razorpay_key_id" name="razorpay_key_id" value="{{ settings.get('razorpay_key_id', '') }}" placeholder="rzp_live_... अथवा rzp_test_..." class="w-full p-3 rounded-xl border border-gray-300 font-mono text-sm">
+                    </div>
+
+                    <div>
+                        <label for="razorpay_key_secret" class="block font-bold text-gray-700 mb-1">Razorpay Key Secret</label>
+                        <input type="password" id="razorpay_key_secret" name="razorpay_key_secret" value="{{ settings.get('razorpay_key_secret', '') }}" placeholder="Secret Key" class="w-full p-3 rounded-xl border border-gray-300 font-mono text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Cashfree Credentials -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-900 text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-lg text-mandir-maroon">Cashfree PG Credentials (v2023-08-01)</h2>
+                        <p class="text-xs text-gray-500">Cashfree Merchant Dashboard > Developers > API Keys</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div>
+                        <label for="cashfree_app_id" class="block font-bold text-gray-700 mb-1">Cashfree App ID (Client ID)</label>
+                        <input type="text" id="cashfree_app_id" name="cashfree_app_id" value="{{ settings.get('cashfree_app_id', '') }}" placeholder="CF App ID" class="w-full p-3 rounded-xl border border-gray-300 font-mono text-sm">
+                    </div>
+
+                    <div>
+                        <label for="cashfree_secret_key" class="block font-bold text-gray-700 mb-1">Cashfree Secret Key</label>
+                        <input type="password" id="cashfree_secret_key" name="cashfree_secret_key" value="{{ settings.get('cashfree_secret_key', '') }}" placeholder="CF Secret Key" class="w-full p-3 rounded-xl border border-gray-300 font-mono text-sm">
+                    </div>
+
+                    <div>
+                        <label for="cashfree_env" class="block font-bold text-gray-700 mb-1">Environment</label>
+                        <select id="cashfree_env" name="cashfree_env" class="w-full p-3 rounded-xl border border-gray-300 text-sm font-semibold">
+                            <option value="SANDBOX" {% if settings.get('cashfree_env') == 'SANDBOX' %}selected{% endif %}>SANDBOX (Test)</option>
+                            <option value="PRODUCTION" {% if settings.get('cashfree_env') == 'PRODUCTION' %}selected{% endif %}>PRODUCTION (Live)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Mandir UPI & Contact -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-200 space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-gray-100">
+                    <div class="w-10 h-10 rounded-xl bg-mandir-amber text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-yatra text-lg text-mandir-maroon">मंदिर UPI एवं संपर्क विवरण</h2>
+                        <p class="text-xs text-gray-500">QR कोड जनरेशन एवं पावती पर प्रदर्शित विवरण</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div>
+                        <label for="mandir_upi_id" class="block font-bold text-gray-700 mb-1">आधिकारिक UPI VPA</label>
+                        <input type="text" id="mandir_upi_id" name="mandir_upi_id" value="{{ settings.get('mandir_upi_id', '') }}" placeholder="burhikalimandir@upi" class="w-full p-3 rounded-xl border border-gray-300 font-mono text-sm">
+                    </div>
+
+                    <div>
+                        <label for="mandir_phone" class="block font-bold text-gray-700 mb-1">कार्यालय हेल्पलाइन नंबर</label>
+                        <input type="text" id="mandir_phone" name="mandir_phone" value="{{ settings.get('mandir_phone', '') }}" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="mandir_email" class="block font-bold text-gray-700 mb-1">कार्यालय ईमेल</label>
+                        <input type="email" id="mandir_email" name="mandir_email" value="{{ settings.get('mandir_email', '') }}" class="w-full p-3 rounded-xl border border-gray-300 text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-right">
+                <button type="submit" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-mandir-red to-mandir-crimson text-white font-bold text-sm shadow-xl hover:brightness-110 transition flex items-center justify-center gap-2 ml-auto">
+                    <i class="fa-solid fa-floppy-disk text-yellow-300"></i>
+                    <span>सेटिंग्स सुरक्षित करें (Save Settings)</span>
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+{% endblock %}
